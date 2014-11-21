@@ -3,6 +3,7 @@ package controllers;
 import java.util.Scanner;
 
 import classes.Building;
+import classes.Elevator;
 
 public class Controller {
 	
@@ -27,11 +28,13 @@ public class Controller {
 		
 		//Create new instance of Building
 		Building theHyde = new Building(numberOfFloors, numberOfCustomers);
+		Elevator lift = new Elevator(numberOfFloors);
 		
 		System.out.println("===============================================================");
 		System.out.println("Floors: " + theHyde.getNumberOfFloors());
 		System.out.println("Customers: " + theHyde.getNumberOfCustomers());
 		System.out.println("Customer list: " + theHyde.getCustomerList());
+		lift.move();
 		
 
 	}

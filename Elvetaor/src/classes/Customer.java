@@ -1,6 +1,6 @@
 package classes;
 
-import java.util.Random;
+import java.util.Random; //generate
 
 public class Customer {
 	
