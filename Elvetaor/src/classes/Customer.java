@@ -13,11 +13,21 @@ public class Customer {
 
 		this.id = id;
 		Random ran = new Random();
+		
+		
 		int i = ran.nextInt(f);
+		int j = ran.nextInt(f);
+		
+		
 		if(i == 13) {
 			currentFloor = i + 1;
 		} else {
 			currentFloor = i;
+		}
+		if(j == 13) {
+			destinationFloor = j + i;
+		} else {
+			destinationFloor = j;
 		}
 		//destinationFloor = ran.nextInt(f);
 
