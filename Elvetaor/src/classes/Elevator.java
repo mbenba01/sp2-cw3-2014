@@ -10,10 +10,12 @@ public class Elevator {
 	private byte direction;  // -1==going down; 0==stops; 1==going up
 	
 	public Elevator(int f) {
+		
 		numOfFloors = f;
 		registerList = new ArrayList<Customer>();
 		currentFloor = 0;
-		direction = 0;
+		
+		direction = 1;
 	}
 	
 	/**
@@ -28,7 +30,7 @@ public class Elevator {
 				if(currentFloor == 13) {
 					currentFloor++;
 				}
-				System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor+1)+" floor. Going up!");
+				System.out.println("Currently on "+currentFloor+" floor "+" going to floor " +(currentFloor+1)+". Going up!");
 			}
 			
 		}else if(direction==-1){ // if direction is set to -1 lift will move one floor down
