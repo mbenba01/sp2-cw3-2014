@@ -25,6 +25,9 @@ public class Elevator {
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
 			}else {
 				currentFloor +=1;
+				if(currentFloor == 13) {
+					currentFloor++;
+				}
 				System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor+1)+" floor. Going up!");
 			}
 			
@@ -33,6 +36,9 @@ public class Elevator {
 				System.out.println("Error. Cannot go down anymore as lift is on the ground floor.");
 			}else{
 				currentFloor -=1;
+				if(currentFloor == 13) {
+					currentFloor--;
+				}
 				System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor-1)+" floor. Going down!");
 			}
 		}else { // if direction is set to 0 or anything else lift will not move
