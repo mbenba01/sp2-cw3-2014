@@ -24,12 +24,12 @@ public class Customer {
 		} else {
 			currentFloor = i;
 		}
+		
 		if(j == 13) {
 			destinationFloor = j + i;
 		} else {
 			destinationFloor = j;
 		}
-		//destinationFloor = ran.nextInt(f);
 
 	}
 	
