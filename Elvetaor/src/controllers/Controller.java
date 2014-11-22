@@ -33,7 +33,8 @@ public class Controller {
 		System.out.println("===============================================================");
 		System.out.println("Floors: " + theHyde.getNumberOfFloors());
 		System.out.println("Customers: " + theHyde.getNumberOfCustomers());
-		System.out.println("Customer list: " + theHyde.getCustomerList());
+		System.out.println("===============================================================");
+		//System.out.println("Customer list: " + theHyde.getCustomerList());
 		lift.move();
 		
 
