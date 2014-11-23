@@ -21,9 +21,9 @@ public class Building {
 	private Elevator elevator;
 	
 	/**
-	 * 
-	 * @param f
-	 * @param c
+	 * Construct instances of Building 
+	 * @param f represents the number of floors, to be decided by the user
+	 * @param c represents the number of customers, to be decided by the user
 	 */
 	public Building(int f, int c) {
 		

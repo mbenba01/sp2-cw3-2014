@@ -85,12 +85,13 @@ public class Elevator {
 		 		if(i == 0) {
 		 			System.out.print("Ground floor!");
 		 		} else {
-		 			System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
-	 				i -= 1;
-		 			if(i == 12) {
+		 			if(i == 14) {
 		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
 		 				i -= 2;
 		 			}
+		 			System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
+	 				i -= 1;
+		 			
 		 		}
 		 	break;
 		 	case 0 :
