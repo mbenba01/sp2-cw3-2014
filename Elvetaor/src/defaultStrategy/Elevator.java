@@ -14,7 +14,10 @@ public class Elevator {
 	 
 	 private static Random rGen = new Random(); // random numbers generator object
 	 
-	/**
+	 public Elevator() {
+		 
+	 }
+	 /**
 	 * Constructs instance of Elevator
 	 * @param f represents the number of floors 
 	 * */
@@ -22,8 +25,6 @@ public class Elevator {
 		 
 		 numberOfFloors = f;
 		 registerList = new ArrayList<Customer>();
-		 
-		 setDirection(-1);
 		 
 	 }
 	 /**
@@ -73,23 +74,23 @@ public class Elevator {
 		 			System.out.println("Reached the last floor!");
 		 		} else {
 		 			if(i == 12) {
-		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
 		 				i += 2;
 		 			} else {
-		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
+		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
 		 				i += 1;
 		 			}
 		 		}
 		 	break;
 		 	case -1 :
 		 		if(i == 0) {
-		 			System.out.print("Ground floor!");
+		 			System.out.println("Reached the ground floor!");
 		 		} else {
 		 			if(i == 14) {
-		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
+		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
 		 				i -= 2;
 		 			}
-		 			System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
+		 			//System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
 	 				i -= 1;
 		 			
 		 		}
@@ -101,31 +102,5 @@ public class Elevator {
 		 	break;
 		 	
 		 }
-	 }
-	 /**
-	  * moves the elevator to the top of the building
-	  */
-	 public void moveUp(int floors) {
-		for(int i = 0; i <= floors; i++) {
-			 
-			if(i == 13) {
-				continue;
-			}
-			 
-			this.currentFloor = i;
-				move(currentFloor);
-			}
-	}
-	public void moveDown(int floors) {
-		for(int i = floors; i >= 0; i--) {
-				 
-			if(i == 13) {
-				continue;
-			}
-			 
-			this.currentFloor = i;
-				move(currentFloor);
-			}
-	}
-		 
+	 }		 
 }
