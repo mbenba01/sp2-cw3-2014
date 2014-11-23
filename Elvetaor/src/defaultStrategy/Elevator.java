@@ -22,7 +22,7 @@ public class Elevator {
 		 
 		 numberOfFloors = f;
 		 registerList = new ArrayList<Customer>();
-		 currentFloor = rGen.nextInt(); 
+		 
 		 direction = getDirection();
 		 
 	 }
@@ -54,6 +54,7 @@ public class Elevator {
 	 
 	 /**
 	  * moves the elevator by 1 floor
+	  * @param i represents 
 	  */
 	 public void move(int i) {
 
@@ -62,11 +63,13 @@ public class Elevator {
 		 		if(i == numberOfFloors) {
 		 			System.out.print("Reached the last floor!");
 		 		} else {
-		 			if(i == 13) {
-		 				i++;
+		 			if(i == 12) {
+		 				i+=2;
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+		 			} else {
+		 				
+		 				i += 1;
 		 			}
-		 			System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
-		 			i += 1;
 		 		}
 		 	break;
 		 	case -1 :
@@ -74,7 +77,7 @@ public class Elevator {
 		 			System.out.print("Ground floor!");
 		 		} else {
 		 			if(i == 13) {
-		 				i++;
+		 				i--;
 		 			}
 		 			System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
 		 			i += 1;
@@ -82,7 +85,7 @@ public class Elevator {
 		 	break;
 		 	case 0 :
 
-		 			System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
+		 			System.out.println("Error! I cannot move as lift has no direction set. \nPlease set direction first!");
 
 		 	break;
 		 	
@@ -93,7 +96,12 @@ public class Elevator {
 	 */
 	 
 	 public void defautlStrategy(int floors) {
-	 for(int i = 0; i < floors - 1; i++) {
+		 for(int i = 0; i < floors; i++) {
+		 
+		 if(i == 13) {
+			 continue;
+		 }
+		 
 		 this.currentFloor = i;
 		 move(currentFloor);
 	 }
