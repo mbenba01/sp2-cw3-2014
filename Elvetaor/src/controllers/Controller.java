@@ -14,7 +14,7 @@ public class Controller {
 		
 		/*//Initialise new object 'in'
 		in = new Scanner(System.in);
-		int numberOfFloors;duify
+		int numberOfFloors;
 		//prompt user for a number of floors to use as a parameter for the Building object
 		System.out.print("Please enter the number of floors: ");
 		numberOfFloors = in.nextInt();

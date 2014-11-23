@@ -13,7 +13,7 @@ public class Elevator {
 		
 		numOfFloors = f;
 		registerList = new ArrayList<Customer>();
-		currentFloor = 0;
+		//currentFloor = 0;
 		
 		direction = 1;
 	}
@@ -22,30 +22,37 @@ public class Elevator {
 		return numOfFloors;
 	}
 	
+	public int getCurrentFloor() {
+		return currentFloor;
+	}
+	
 	/**
 	 * The method to move the elevator by 1 floor
 	 */
-	public void move(){
+	public void move(int i){
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
-			if(currentFloor==numOfFloors){ // in case lift is already on the last floor
+			if(i==numOfFloors){ // in case lift is already on the last floor
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
 			}else {
-				currentFloor += 1;
-				if(currentFloor == 13) {
-					currentFloor++;
+				
+				if(i == 13) {
+					i++;
 				}
-				System.out.println("Currently on "+currentFloor+" floor "+" going to floor " +(currentFloor+1)+". Going up!");
+				System.out.println("Currently on "+ i +" floor "+" going to floor " +(i + 1)+". Going up!");
+				i += 1;
 			}
 			
 		}else if(direction==-1){ // if direction is set to -1 lift will move one floor down
-			if(currentFloor==0){
+			if(i==0){
 				System.out.println("Error. Cannot go down anymore as lift is on the ground floor.");
 			}else{
-				currentFloor -=1;
-				if(currentFloor == 13) {
-					currentFloor--;
+				
+				System.out.println("Currently on "+ i +" floor "+" going to "+(i - 1)+" floor. Going down!");
+				if(i == 13) {
+					i--;
 				}
-				System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor-1)+" floor. Going down!");
+				
+				i -= 1;
 			}
 		}else { // if direction is set to 0 or anything else lift will not move
 			System.out.println("Error! I cannot move as lift has no direction set. \nPlease set direction first!");
@@ -53,9 +60,10 @@ public class Elevator {
 	}
 	
 	public void defautlStrategy() {
-		for(int i = 1; i < getNumOfFloors(); i++) {
-			
-			move();
+		
+		for(int i = 0; i < getNumOfFloors() - 1; i++) {
+			this.currentFloor = i;
+			move(currentFloor);
 			
 		}
 	}
