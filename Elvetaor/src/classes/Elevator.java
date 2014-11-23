@@ -53,8 +53,10 @@ public class Elevator {
 	}
 	
 	public void defautlStrategy() {
-		for(int i = 0; i < getNumOfFloors(); i++) {
+		for(int i = 1; i < getNumOfFloors(); i++) {
+			
 			move();
+			
 		}
 	}
 	
