@@ -18,6 +18,10 @@ public class Elevator {
 		direction = 1;
 	}
 	
+	public int getNumOfFloors() {
+		return numOfFloors;
+	}
+	
 	/**
 	 * The method to move the elevator by 1 floor
 	 */
@@ -47,6 +51,13 @@ public class Elevator {
 			System.out.println("Error! I cannot move as lift has no direction set. \nPlease set direction first!");
 		}
 	}
+	
+	public void defautlStrategy() {
+		for(int i = 0; i < getNumOfFloors(); i++) {
+			move();
+		}
+	}
+	
 	/**
 	 * The method to add a Customer to the Elevator's registeList
 	 * @param c a Customer to be added to the registerList
