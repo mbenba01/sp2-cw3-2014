@@ -30,7 +30,7 @@ public class Elevator {
 			if(currentFloor==numOfFloors){ // in case lift is already on the last floor
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
 			}else {
-				currentFloor +=1;
+				currentFloor += 1;
 				if(currentFloor == 13) {
 					currentFloor++;
 				}
