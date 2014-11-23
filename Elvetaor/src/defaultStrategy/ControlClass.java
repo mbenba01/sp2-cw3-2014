@@ -27,14 +27,19 @@ public class ControlClass {
 		//Create new instance of Building
 		Building theHyde = new Building(15, 7);
 		Elevator lift = new Elevator(15);
-		
+		Customer user = new Customer(3, 15);
 		System.out.println("===============================================================");
 		System.out.println("Floors: " + theHyde.getNumberOfFloors());
 		System.out.println("Customers: " + theHyde.getNumberOfCustomers());
 		System.out.println("===============================================================");
-		//System.out.println("Customer list: " + theHyde.getCustomerList());
-		lift.defautlStrategy(lift.getNumberOfFloors());
-		
+		System.out.println("Customer list: " + theHyde.getCustomerList());
+		System.out.println("===============================================================");
+
+			lift.setDirection(1);
+			lift.moveUp(lift.getNumberOfFloors());
+			System.out.println("===============================================================");
+			lift.setDirection(-1);
+			lift.moveDown(lift.getNumberOfFloors());
 
 	}
 

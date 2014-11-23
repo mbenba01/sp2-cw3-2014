@@ -23,14 +23,20 @@ public class Elevator {
 		 numberOfFloors = f;
 		 registerList = new ArrayList<Customer>();
 		 
-		 direction = getDirection();
+		 setDirection(-1);
 		 
 	 }
-	 
+	 /**
+	  * makes number of floors accessible to other classes
+	  * @return number of floors registered in the elevator
+	  */
 	 public int getNumberOfFloors() {
 		 return numberOfFloors;
 	 }
-	 
+	 /**
+	  * makes position of the elevator accessible to use by other classes
+	  * @return current floor that represents the position of the floor
+	  */
 	 public int getCurrentFloor() {
 		 return currentFloor;
 	 }
@@ -39,14 +45,17 @@ public class Elevator {
 		 return direction;
 	 }
 	 
+	 /** 
+	  * 
+	  * @param i
+	  * @return
+	  */
 	 public int setDirection(int i) {
 		 
-		 if(currentFloor < i) {
+		 if(this.currentFloor < i) {
 			 direction = 1;
-		 } else if(currentFloor > i) {
+		 } else if(this.currentFloor > i) {
 			 direction = -1;
-		 } else {
-			 direction = 0;
 		 }
 		 return direction;
 		 
@@ -61,13 +70,13 @@ public class Elevator {
 		 switch (direction) {
 		 	case 1 :
 		 		if(i == numberOfFloors) {
-		 			System.out.print("Reached the last floor!");
+		 			System.out.println("Reached the last floor!");
 		 		} else {
 		 			if(i == 12) {
-		 				i+=2;
 		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+		 				i += 2;
 		 			} else {
-		 				
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
 		 				i += 1;
 		 			}
 		 		}
@@ -76,11 +85,12 @@ public class Elevator {
 		 		if(i == 0) {
 		 			System.out.print("Ground floor!");
 		 		} else {
-		 			if(i == 13) {
-		 				i--;
-		 			}
 		 			System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
-		 			i += 1;
+	 				i -= 1;
+		 			if(i == 12) {
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
+		 				i -= 2;
+		 			}
 		 		}
 		 	break;
 		 	case 0 :
@@ -92,19 +102,29 @@ public class Elevator {
 		 }
 	 }
 	 /**
-	 * moves the elevator to the top of the building
-	 */
-	 
-	 public void defautlStrategy(int floors) {
-		 for(int i = 0; i < floors; i++) {
+	  * moves the elevator to the top of the building
+	  */
+	 public void moveUp(int floors) {
+		for(int i = 0; i <= floors; i++) {
+			 
+			if(i == 13) {
+				continue;
+			}
+			 
+			this.currentFloor = i;
+				move(currentFloor);
+			}
+	}
+	public void moveDown(int floors) {
+		for(int i = floors; i >= 0; i--) {
+				 
+			if(i == 13) {
+				continue;
+			}
+			 
+			this.currentFloor = i;
+				move(currentFloor);
+			}
+	}
 		 
-		 if(i == 13) {
-			 continue;
-		 }
-		 
-		 this.currentFloor = i;
-		 move(currentFloor);
-	 }
-	 }
-
 }

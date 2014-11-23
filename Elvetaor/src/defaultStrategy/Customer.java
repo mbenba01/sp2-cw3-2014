@@ -30,7 +30,7 @@ public class Customer {
 		int j = rGen.nextInt(f); // range 0 - number of floors
 		
 		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
-		this.destinationFloor = removeThirteen(i); // remove thirteen from possible random numbers
+		this.destinationFloor = removeThirteen(j); // remove thirteen from possible random numbers
 	}
 	
 	public int getId() {

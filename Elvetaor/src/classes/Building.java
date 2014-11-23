@@ -15,14 +15,14 @@ import java.util.ArrayList;
 public class Building {
 	
 	private int numberOfFloors;
-	private ArrayList<Customer> customerList; // list of customers willig to use an Elevator 
+	private ArrayList<Customer> customerList; // list of customers in the Building 
 	private int numberOfCustomers; 
 	private Elevator elevator;
 	
 	/**
-	 * 
-	 * @param f
-	 * @param c
+	 * Constructs instances of Building
+	 * @param f represents the number of floors, to be decided by the user
+	 * @param c represents the number of customers, to
 	 */
 	public Building(int f, int c) {
 		
