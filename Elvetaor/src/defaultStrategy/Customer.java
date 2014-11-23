@@ -1,21 +1,36 @@
 package defaultStrategy;
 
-import java.util.Random;
+import java.util.Random; // Random class, used to generate random numbers
 
 public class Customer {
 	
+	//instance variables
 	private int id;
-	private int currentFloor;
-	private int destinationFloor;
-	private boolean inElevator;
+	private int currentFloor; // Randomly assigned
+	private int destinationFloor; // Randomly assigned
 	
+	private boolean inElevator; // Flag to denote if customer is in elevator
+	private boolean finished; // Flag to denote if customer is in elevator
+	
+	private static Random rGen = new Random(); // new random number generator
+	
+	public Customer() {
+		
+	}
+	
+	/**
+	 * Constructs instances of Customer
+	 * @param id represents the identifier of Customer objects
+	 * @param f represents the number of floors
+	 */
 	public Customer(int id, int f) {
 
 		this.id = id;
-		Random ran = new Random();
-		currentFloor = ran.nextInt(f);
-		destinationFloor = ran.nextInt(f);
-
+		int i = rGen.nextInt(f); // range 0 - number of floors
+		int j = rGen.nextInt(f); // range 0 - number of floors
+		
+		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
+		this.destinationFloor = removeThirteen(i); // remove thirteen from possible random numbers
 	}
 	
 	public int getId() {
@@ -30,6 +45,15 @@ public class Customer {
 		return destinationFloor;
 	}
 	
+	public int removeThirteen(int i) {
+		int temp;
+		if(i == 13) {
+			temp = i + 1 ;
+		} else {
+			temp = i;
+		}
+		return temp;
+	}
 	
 	@Override
 	public int hashCode() {
