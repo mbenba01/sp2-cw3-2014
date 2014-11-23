@@ -12,7 +12,7 @@ public class Controller {
 	
 	public static void main(String[] args) {
 		
-		//Initialise new object 'in'
+		/*//Initialise new object 'in'
 		in = new Scanner(System.in);
 		int numberOfFloors;
 		//prompt user for a number of floors to use as a parameter for the Building object
@@ -24,11 +24,11 @@ public class Controller {
 		int numberOfCustomers = in.nextInt();
 		
 		//Close Scanner object 'in' after use.
-		in.close();
+		in.close();*/
 		
 		//Create new instance of Building
-		Building theHyde = new Building(numberOfFloors, numberOfCustomers);
-		Elevator lift = new Elevator(numberOfFloors);
+		Building theHyde = new Building(17, 10);
+		Elevator lift = new Elevator(10);
 		
 		System.out.println("===============================================================");
 		System.out.println("Floors: " + theHyde.getNumberOfFloors());
