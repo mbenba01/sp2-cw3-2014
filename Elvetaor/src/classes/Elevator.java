@@ -28,6 +28,7 @@ public class Elevator {
 	
 	/**
 	 * The method to move the elevator by 1 floor
+	 * @param i represents the floors in the building
 	 */
 	public void move(int i){
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
@@ -59,6 +60,9 @@ public class Elevator {
 		}
 	}
 	
+	/**
+	 * moves the elevator to the top of the building
+	 */
 	public void defautlStrategy() {
 		
 		for(int i = 0; i < getNumOfFloors() - 1; i++) {
