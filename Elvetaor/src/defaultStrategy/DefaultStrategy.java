@@ -3,7 +3,7 @@ package defaultStrategy;
 public class DefaultStrategy extends Elevator {
 	
 	private int currentFloor;
-	private byte direction;
+	private Customer user = new Customer();
 	
 	/**
 	 * Constructs an instance of the DefaultStrategy
@@ -13,7 +13,7 @@ public class DefaultStrategy extends Elevator {
 	public DefaultStrategy(int floor, int currentFloor) {
 		super(floor);
 		this.currentFloor = currentFloor; // stores the position of the elevator
-		direction = (byte) setDirection(0); // stores the direction of the elevator
+		//direction = setDirection(0); // stores the direction of the elevator
 	}
 	
 	public int getCurrentFloor() {
@@ -24,6 +24,8 @@ public class DefaultStrategy extends Elevator {
 	  * moves the elevator to the top of the building
 	  * @param floors represents the number of floors
 	  */
+	
+	
 	 public void moveUp(int floors) {
 		for(int i = 0; i <= floors; i++) {
 			 
@@ -32,9 +34,10 @@ public class DefaultStrategy extends Elevator {
 			}
 			 
 			this.currentFloor = i;
-				super.move(currentFloor);
+				move(currentFloor);
 			}
 	}
+	 
 	public void moveDown(int floors) {
 		for(int i = floors; i >= 0; i--) {
 				 
@@ -43,7 +46,7 @@ public class DefaultStrategy extends Elevator {
 			}
 			 
 			this.currentFloor = i;
-				super.move(currentFloor);
+				move(currentFloor);
 			}
 	}
 	

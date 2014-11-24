@@ -24,7 +24,7 @@ public class Customer {
 	 * @param f represents the number of floors
 	 */
 	public Customer(int id, int f) {
-
+		this();
 		this.id = id;
 		int i = rGen.nextInt(f); // range 0 - number of floors
 		int j = rGen.nextInt(f); // range 0 - number of floors
@@ -53,6 +53,35 @@ public class Customer {
 			temp = i;
 		}
 		return temp;
+	}
+	
+	public void callElevator(int currentFloor) {
+		if(this.currentFloor == currentFloor) 
+		{
+			System.out.println("Cling!");
+		} 
+		else if(this.currentFloor > currentFloor) 
+		{
+			for(int i = currentFloor; i <= this.currentFloor; i++) {
+				if(i == 13) {
+					continue;
+				}
+				System.out.println("Lift going up: " + i);
+				currentFloor = i;
+			}
+			System.out.println("You are in floor: " + currentFloor);
+			
+		}
+		else
+		{
+			for(int i = currentFloor; i >= this.currentFloor; i--) {
+				if(i == 13) {
+					continue;
+				}
+				System.out.println("Lift going down: " + i);
+				currentFloor = i;
+			}
+		}
 	}
 	
 	@Override

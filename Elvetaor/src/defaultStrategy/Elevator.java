@@ -24,7 +24,7 @@ public class Elevator {
 	 public Elevator(int f) {
 		 
 		 numberOfFloors = f;
-		 registerList = new ArrayList<Customer>();
+		 setRegisterList(new ArrayList<Customer>());
 		 
 	 }
 	 /**
@@ -45,13 +45,19 @@ public class Elevator {
 	 public byte getDirection() {
 		 return direction;
 	 }
+	 public ArrayList<Customer> getRegisterList() {
+		return registerList;
+	 }
+	 public void setRegisterList(ArrayList<Customer> registerList) {
+		this.registerList = registerList;
+	 }	
 	 
 	 /** 
 	  * 
 	  * @param i
 	  * @return
 	  */
-	 public int setDirection(int i) {
+	 public byte setDirection(int i) {
 		 
 		 if(this.currentFloor < i) {
 			 direction = 1;
@@ -95,12 +101,13 @@ public class Elevator {
 		 			
 		 		}
 		 	break;
-		 	case 0 :
+		 	default :
 
 		 			System.out.println("Error! I cannot move as lift has no direction set. \nPlease set direction first!");
 
 		 	break;
 		 	
 		 }
-	 }		 
+	 }
+	 
 }

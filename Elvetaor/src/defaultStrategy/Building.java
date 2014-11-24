@@ -2,7 +2,6 @@ package defaultStrategy;
 
 import java.util.ArrayList;
 
-
 /**
  * The Building class stores the number of floors and and the number of customers
  * that will be used in the Elevator program.
@@ -15,13 +14,14 @@ import java.util.ArrayList;
  */
 public class Building {
 	
-	private int numberOfFloors;
-	private ArrayList<Customer> customerList;
-	private int numberOfCustomers; 
-	private Elevator elevator;
+	private int numberOfFloors; // assigned randomly by the user
+	private ArrayList<Customer> customerList; //list of customers in the building
+	private Customer liftUser; // individual customer
+	private int numberOfCustomers; // assigned randomly
+	private Elevator elevator; // reference to the Elevator object
 	
 	/**
-	 * Construct instances of Building 
+	 * Constructs instances of Building 
 	 * @param f represents the number of floors, to be decided by the user
 	 * @param c represents the number of customers, to be decided by the user
 	 */
@@ -32,12 +32,53 @@ public class Building {
 		
 		ArrayList<Customer> myList = new ArrayList<>(); // Create ArrayList of type Customer
 		
+		
 		for(int j = 1; j <= c; j++) {
-			myList.add(new Customer(j, numberOfFloors)); // Add instances of Customer to ArrayList	
+			myList.add(new Customer(j, numberOfFloors)); // Add instances of Customer to ArrayList
+			for(Customer liftUser: myList) {
+				liftUser = new Customer(j, numberOfFloors); // sorts individual Customer objects in customer list
+				//System.out.println("Lift user: " + liftUser); prints out individual customer objects (Testing purposes)
+				break;
+			}
 		}
+		
 
 		this.customerList = myList; // Store instances of Customer in myList
 
+	}
+	
+	/**
+	 * Calls Elevator from within the building
+	 * @param currentFloor represents the current position of the Elevator in the building
+	 */
+	public void callElevator(int currentFloor) {
+		if(liftUser.getCurrentFloor() == currentFloor) 
+		{
+			System.out.println("Cling!");
+		} 
+		else if(liftUser.getCurrentFloor() > currentFloor) 
+		{
+			for(int i = currentFloor; i <= liftUser.getCurrentFloor(); i++) {
+				if(i == 13) {
+					continue;
+				}
+				System.out.println("Lift going up: " + i);
+				currentFloor = i;
+			}
+			System.out.println("You are in floor: " + currentFloor);
+			
+		}
+		else
+		{
+			for(int i = currentFloor; i >= liftUser.getCurrentFloor(); i--) {
+				if(i == 13) {
+					continue;
+				}
+				System.out.println("Lift going down: " + i);
+				currentFloor = i;
+			}
+			System.out.println("You are in floor: " + currentFloor);
+		}
 	}
 	
 	public int getNumberOfFloors() {
@@ -59,5 +100,11 @@ public class Building {
 	public ArrayList<Customer> getCustomerList() {
 		return customerList;
 	}
+	
+	public Customer getLiftUser() {
+		return liftUser;
+	}
+	
+	
 	
 }
