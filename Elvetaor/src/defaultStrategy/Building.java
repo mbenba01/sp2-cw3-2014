@@ -40,6 +40,7 @@ public class Building {
 				//System.out.println("Lift user: " + liftUser); prints out individual customer objects (Testing purposes)
 				break;
 			}
+			
 		}
 		
 
@@ -47,38 +48,8 @@ public class Building {
 
 	}
 	
-	/**
-	 * Calls Elevator from within the building
-	 * @param currentFloor represents the current position of the Elevator in the building
-	 */
-	public void callElevator(int currentFloor) {
-		if(liftUser.getCurrentFloor() == currentFloor) 
-		{
-			System.out.println("Cling!");
-		} 
-		else if(liftUser.getCurrentFloor() > currentFloor) 
-		{
-			for(int i = currentFloor; i <= liftUser.getCurrentFloor(); i++) {
-				if(i == 13) {
-					continue;
-				}
-				System.out.println("Lift going up: " + i);
-				currentFloor = i;
-			}
-			System.out.println("You are in floor: " + currentFloor);
-			
-		}
-		else
-		{
-			for(int i = currentFloor; i >= liftUser.getCurrentFloor(); i--) {
-				if(i == 13) {
-					continue;
-				}
-				System.out.println("Lift going down: " + i);
-				currentFloor = i;
-			}
-			System.out.println("You are in floor: " + currentFloor);
-		}
+	public Building() {
+		
 	}
 	
 	public int getNumberOfFloors() {

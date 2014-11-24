@@ -24,8 +24,6 @@ public class DefaultStrategy extends Elevator {
 	  * moves the elevator to the top of the building
 	  * @param floors represents the number of floors
 	  */
-	
-	
 	 public void moveUp(int floors) {
 		for(int i = 0; i <= floors; i++) {
 			 
@@ -35,7 +33,7 @@ public class DefaultStrategy extends Elevator {
 			 
 			this.currentFloor = i;
 				move(currentFloor);
-			}
+		}
 	}
 	 
 	public void moveDown(int floors) {

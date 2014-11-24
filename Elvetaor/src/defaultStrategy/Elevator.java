@@ -3,7 +3,7 @@ package defaultStrategy;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Elevator {
+public class Elevator extends Building {
 	
 	 // instance variables 
 	 private int numberOfFloors; // inherit from Building
@@ -14,9 +14,11 @@ public class Elevator {
 	 
 	 private static Random rGen = new Random(); // random numbers generator object
 	 
+	 // calls the constructor of the Building class
 	 public Elevator() {
-		 
+		 super();
 	 }
+	 
 	 /**
 	 * Constructs instance of Elevator
 	 * @param f represents the number of floors 
@@ -64,8 +66,7 @@ public class Elevator {
 		 } else if(this.currentFloor > i) {
 			 direction = -1;
 		 }
-		 return direction;
-		 
+		 return direction; 
 	 }
 	 
 	 /**
@@ -80,10 +81,10 @@ public class Elevator {
 		 			System.out.println("Reached the last floor!");
 		 		} else {
 		 			if(i == 12) {
-		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
 		 				i += 2;
 		 			} else {
-		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
 		 				i += 1;
 		 			}
 		 		}

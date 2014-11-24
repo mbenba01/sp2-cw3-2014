@@ -45,6 +45,11 @@ public class Customer {
 		return destinationFloor;
 	}
 	
+	/** ensures the elevator does not stop on thirteenth floor
+	 * 
+	 * @param i represents the current floor of customer
+	 * @return the current floor of the customer
+	 */
 	public int removeThirteen(int i) {
 		int temp;
 		if(i == 13) {
@@ -55,6 +60,10 @@ public class Customer {
 		return temp;
 	}
 	
+	/**
+	 * allows the customer in the building to call the lift
+	 * @param currentFloor represents the position of the elevator
+	 */
 	public void callElevator(int currentFloor) {
 		if(this.currentFloor == currentFloor) 
 		{
