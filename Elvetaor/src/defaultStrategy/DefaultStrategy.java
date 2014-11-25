@@ -11,6 +11,7 @@ public class DefaultStrategy extends Elevator {
 	 * @param currentFloor represents the current floor of the elevator
 	 */
 	public DefaultStrategy(int floor, int currentFloor) {
+		
 		super(floor);
 		this.currentFloor = currentFloor; // stores the position of the elevator
 		//direction = setDirection(0); // stores the direction of the elevator
@@ -33,7 +34,7 @@ public class DefaultStrategy extends Elevator {
 			 
 			this.currentFloor = i;
 				move(currentFloor);
-		}
+			}
 	}
 	 
 	public void moveDown(int floors) {

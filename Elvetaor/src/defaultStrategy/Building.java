@@ -34,15 +34,8 @@ public class Building {
 		
 		
 		for(int j = 1; j <= c; j++) {
-			myList.add(new Customer(j, numberOfFloors)); // Add instances of Customer to ArrayList
-			for(Customer liftUser: myList) {
-				liftUser = new Customer(j, numberOfFloors); // sorts individual Customer objects in customer list
-				//System.out.println("Lift user: " + liftUser); prints out individual customer objects (Testing purposes)
-				break;
-			}
-			
+			myList.add(new Customer(j, numberOfFloors)); // Add instances of Customer to ArrayList	
 		}
-		
 
 		this.customerList = myList; // Store instances of Customer in myList
 

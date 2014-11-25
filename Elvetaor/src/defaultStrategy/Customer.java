@@ -65,6 +65,7 @@ public class Customer {
 	 * @param currentFloor represents the position of the elevator
 	 */
 	public void callElevator(int currentFloor) {
+		
 		if(this.currentFloor == currentFloor) 
 		{
 			System.out.println("Cling!");
