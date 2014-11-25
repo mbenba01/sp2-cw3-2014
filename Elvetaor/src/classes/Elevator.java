@@ -26,21 +26,58 @@ public class Elevator {
 		return currentFloor;
 	}
 	
+	public void move(int i) {
+
+		 switch (direction) {
+		 	case 1 :
+		 		if(i == numOfFloors) {
+		 			System.out.println("Reached the last floor!");
+		 		} else {
+		 			if(i == 12) {
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+		 				i += 2;
+		 			} else {
+		 				
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
+		 				i += 1;
+		 			}
+		 		}
+		 	break;
+		 	case -1 :
+		 		if(i == 0) {
+		 			System.out.println("Reached the ground floor!");
+		 		} else {
+		 			if(i == 14) {
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
+		 				i -= 2;
+		 			} else {
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
+		 				i -= 1;
+		 			}
+		 		}
+		 	break;
+		 	default :
+
+		 			System.out.println("Error! I cannot move as lift has no direction set. \nPlease set direction first!");
+		 	break;
+		 }
+	 }
 	/**
 	 * The method to move the elevator by 1 floor
 	 * @param i represents the floors in the building
 	 */
-	public void move(int i){
+	public void move1(int i){
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
 			if(i==numOfFloors){ // in case lift is already on the last floor
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
 			}else {
-				
-				if(i == 13) {
-					i++;
-				}
-				System.out.println("Currently on "+ i +" floor "+" going to floor " +(i + 1)+". Going up!");
-				i += 1;
+				if(i == 12) {
+	 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+	 				i += 2;
+	 			} else {
+	 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
+	 				i += 1;
+	 			}
 			}
 			
 		}else if(direction==-1){ // if direction is set to -1 lift will move one floor down
@@ -64,11 +101,22 @@ public class Elevator {
 	 * moves the elevator to the top of the building
 	 */
 	public void defautlStrategy() {
-		
-		for(int i = 0; i < getNumOfFloors() - 1; i++) {
+		for(int i = 0; i <= getNumOfFloors(); i++) {
+			if(i == 13) {
+				continue;
+			}			 
 			this.currentFloor = i;
-			move(currentFloor);
-			
+				move(currentFloor);
+		}
+		System.out.println("---------------------------------------------");
+		direction = -1;
+		for(int i = getNumOfFloors(); i > 0  - 1; i--) {
+			if(i == 13) {
+				continue;
+			}
+			 
+			this.currentFloor = i;
+			move(currentFloor);	
 		}
 	}
 	
