@@ -96,11 +96,13 @@ public class Elevator extends Building {
 		 			System.out.println("Reached the ground floor!");
 		 		} else {
 		 			if(i == 14) {
-		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
 		 				i -= 2;
+		 			} else {
+		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
+		 				i -= 1;
 		 			}
-		 			//System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
-	 				i -= 1;
+	 				
 		 			
 		 		}
 		 	break;

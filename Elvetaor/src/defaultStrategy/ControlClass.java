@@ -38,12 +38,12 @@ public class ControlClass {
 		System.out.println("===============================================================");
 
 		
-		//lift1.setDirection(1);
+		lift1.setDirection(1);
 		user.callElevator(lift.getCurrentFloor());
-		//lift1.moveUp(lift.getNumberOfFloors());
+		lift1.moveUp(lift.getNumberOfFloors());
 		System.out.println("===============================================================");
-		//lift1.setDirection(-1);
-		//lift1.moveDown(lift.getNumberOfFloors());
+		lift1.setDirection(-1);
+		lift1.moveDown(lift.getNumberOfFloors());
 
 	}
 
