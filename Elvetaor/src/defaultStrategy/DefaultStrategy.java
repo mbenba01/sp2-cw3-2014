@@ -34,7 +34,7 @@ public class DefaultStrategy extends Elevator {
 			 
 			this.currentFloor = i;
 				move(currentFloor);
-			}
+		}
 	}
 	 
 	public void moveDown(int floors) {
@@ -46,7 +46,7 @@ public class DefaultStrategy extends Elevator {
 			 
 			this.currentFloor = i;
 				move(currentFloor);
-			}
+		}
 	}
 	
 }
