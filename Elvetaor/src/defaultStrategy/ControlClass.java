@@ -16,7 +16,7 @@ public class ControlClass {
 	
 	public static void main(String[] args) {
 		
-		/*//Initialise new object 'in'
+		//Initialise new object 'in'
 		in = new Scanner(System.in);
 		int numberOfFloors;
 		//prompt user for a number of floors to use as a parameter for the Building object
@@ -28,11 +28,11 @@ public class ControlClass {
 		int numberOfCustomers = in.nextInt();
 		
 		//Close Scanner object 'in' after use.
-		in.close();*/
+		in.close();
 		
 		//Create new instance of Building
-		theHyde = new Building(15, 7);
-		lift = new Elevator(15);
+		theHyde = new Building(numberOfFloors, numberOfCustomers);
+		lift = new Elevator(numberOfFloors);
 		defaultStrategy = new DefaultStrategy(lift.getNumberOfFloors(), lift.getCurrentFloor());
 		
 		//Code belowoutputs the number of floors in the building, the number of customers and the list of customers. 
@@ -47,46 +47,49 @@ public class ControlClass {
 		
 		defaultStrategy.setDirection(1);
 		//user.callElevator(lift.getCurrentFloor());
-		defaultStrategy.moveUp(lift.getNumberOfFloors());
-		//int lCf  = 0; // lift.getCurrentFloor();
-		/*while(lCf <= lift.getNumberOfFloors()) {
-			
+		
+		int lCfU  = 0; // lift.getCurrentFloor();
+		while(lCfU <= lift.getNumberOfFloors()) {
+			if(lCfU != lift.getNumberOfFloors()) {
+				System.out.println("Currently on floor " + lCfU + " going up..");
+			}
 			for(Customer user : theHyde.getCustomerList()) {
-				if(lCf == user.getCurrentFloor()) {
+				if(lCfU == user.getCurrentFloor()) {
 					System.out.println("User: " + user);
 				}
 			}
-			System.out.println("Currently on floor " + lCf);
-			if(lCf == 12) {
-				lCf += 2; 
+			
+			if(lCfU == 12) {
+				lCfU += 2; 
 			} else {
-				lCf++;
+				lCfU++;
 			}
 			
-		}*/
-		
+		}
+		defaultStrategy.moveUp(lift.getNumberOfFloors());	
 		System.out.println("===============================================================");
 		defaultStrategy.setDirection(-1);
-		
-		int lCf  = lift.getNumberOfFloors();
-		while(lCf >= 0) {
+		int lCfD  = lift.getNumberOfFloors();
+		while(lCfD >= 0) {
 			
 			
 			for(Customer user : theHyde.getCustomerList()) {
-				if(lCf == user.getDestinationFloor()) {
-					System.out.println("User: " + user);
+				if(lCfD == user.getDestinationFloor()) {
+					System.out.println("User/s on this floor: " + user);
 				}
 			}
-			
-			System.out.println("Currently on floor " + lCf);
-			if(lCf == 14) {
-				lCf -= 2; 
+			if(lCfD != 0) {
+				System.out.println("\nCurrently on floor " + lCfD + " going down..");	
+			}
+			if(lCfD == 14) {
+				lCfD -= 2; 
 			} else {
-				lCf--;
+				lCfD--;
 			}
 			
 		}
 		defaultStrategy.moveDown(lift.getNumberOfFloors());
+		
 	}
 
 }
