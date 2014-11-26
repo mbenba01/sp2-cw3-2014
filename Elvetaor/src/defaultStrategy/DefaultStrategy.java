@@ -1,9 +1,11 @@
 package defaultStrategy;
 
+import java.util.ArrayList;
+
 public class DefaultStrategy extends Elevator {
 	
 	private int currentFloor;
-	private Customer user = new Customer();
+	private Customer user;
 	
 	/**
 	 * Constructs an instance of the DefaultStrategy
@@ -15,6 +17,7 @@ public class DefaultStrategy extends Elevator {
 		super(floor);
 		this.currentFloor = currentFloor; // stores the position of the elevator
 		//direction = setDirection(0); // stores the direction of the elevator
+		
 	}
 	
 	public int getCurrentFloor() {
@@ -27,13 +30,14 @@ public class DefaultStrategy extends Elevator {
 	  */
 	 public void moveUp(int floors) {
 		for(int i = 0; i <= floors; i++) {
-			 
+			
 			if(i == 13) {
 				continue;
 			}
 			 
 			this.currentFloor = i;
-				move(currentFloor);
+			move(currentFloor);
+			
 		}
 	}
 	 

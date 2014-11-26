@@ -14,8 +14,10 @@ public class Customer {
 	
 	private static Random rGen = new Random(); // new random number generator
 	
-	public Customer() {
-		
+	public Customer(int id, int cF, int dF) {
+		this.id = id;
+		this.currentFloor = cF; // removeThirteen(i); // remove thirteen from possible random numbers 
+		this.destinationFloor = dF; // removeThirteen(j); // remove thirteen from possible random numbers
 	}
 	
 	/**
@@ -24,7 +26,6 @@ public class Customer {
 	 * @param f represents the number of floors
 	 */
 	public Customer(int id, int f) {
-		this();
 		this.id = id;
 		int i = rGen.nextInt(f); // range 0 - number of floors
 		int j = rGen.nextInt(f); // range 0 - number of floors
@@ -76,7 +77,7 @@ public class Customer {
 				if(i == 13) {
 					continue;
 				}
-				System.out.println("Lift going up: " + i);
+				//System.out.println("Lift going up: " + i);
 				currentFloor = i;
 			}
 			System.out.println("You are in floor: " + currentFloor);
@@ -88,7 +89,7 @@ public class Customer {
 				if(i == 13) {
 					continue;
 				}
-				System.out.println("Lift going down: " + i);
+				//System.out.println("Lift going down: " + i);
 				currentFloor = i;
 			}
 		}

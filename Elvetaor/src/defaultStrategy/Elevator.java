@@ -5,7 +5,7 @@ import java.util.Random;
 
 import classes.Customer;
 
-public class Elevator extends Building {
+public class Elevator {
 	
 	 // instance variables 
 	 private int numberOfFloors; // inherit from Building
@@ -16,10 +16,6 @@ public class Elevator extends Building {
 	 
 	 private static Random rGen = new Random(); // random numbers generator object
 	 
-	 // calls the constructor of the Building class
-	 public Elevator() {
-		 super();
-	 }
 	 
 	 /**
 	 * Constructs instance of Elevator
@@ -73,7 +69,7 @@ public class Elevator extends Building {
 	 
 	 /**
 	  * moves the elevator by 1 floor
-	  * @param i represents 
+	  * @param i current floor of the elevator
 	  */
 	 public void move(int i) {
 
@@ -83,10 +79,10 @@ public class Elevator extends Building {
 		 			System.out.println("Reached the last floor!");
 		 		} else {
 		 			if(i == 12) {
-		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
 		 				i += 2;
 		 			} else {
-		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
+		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
 		 				i += 1;
 		 			}
 		 		}
@@ -96,10 +92,10 @@ public class Elevator extends Building {
 		 			System.out.println("Reached the ground floor!");
 		 		} else {
 		 			if(i == 14) {
-		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
+		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
 		 				i -= 2;
 		 			} else {
-		 				System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
+		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
 		 				i -= 1;
 		 			}
 	 				
