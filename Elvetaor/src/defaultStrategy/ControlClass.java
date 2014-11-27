@@ -10,13 +10,13 @@ public class ControlClass {
 	public static Scanner in;
 	private static Building theHyde;
 	private static Elevator lift;
-	private static Customer user;
+	private Customer user;
 	private static DefaultStrategy defaultStrategy;
 
 	
 	public static void main(String[] args) {
 		
-		//Initialise new object 'in'
+		/*//Initialise new object 'in'
 		in = new Scanner(System.in);
 		int numberOfFloors;
 		//prompt user for a number of floors to use as a parameter for the Building object
@@ -28,11 +28,11 @@ public class ControlClass {
 		int numberOfCustomers = in.nextInt();
 		
 		//Close Scanner object 'in' after use.
-		in.close();
+		in.close();*/
 		
 		//Create new instance of Building
-		theHyde = new Building(numberOfFloors, numberOfCustomers);
-		lift = new Elevator(numberOfFloors);
+		theHyde = new Building(15, 7);
+		lift = new Elevator(15);
 		defaultStrategy = new DefaultStrategy(lift.getNumberOfFloors(), lift.getCurrentFloor());
 		
 		//Code belowoutputs the number of floors in the building, the number of customers and the list of customers. 
@@ -51,11 +51,11 @@ public class ControlClass {
 		int lCfU  = 0; // lift.getCurrentFloor();
 		while(lCfU <= lift.getNumberOfFloors()) {
 			if(lCfU != lift.getNumberOfFloors()) {
-				System.out.println("Currently on floor " + lCfU + " going up..");
+				System.out.println("Floor: " + lCfU + " going up..");
 			}
 			for(Customer user : theHyde.getCustomerList()) {
 				if(lCfU == user.getCurrentFloor()) {
-					System.out.println("User: " + user);
+					System.out.println("User/s on this floor: " + user);
 				}
 			}
 			
@@ -66,7 +66,8 @@ public class ControlClass {
 			}
 			
 		}
-		defaultStrategy.moveUp(lift.getNumberOfFloors());	
+		defaultStrategy.moveUp(lift.getNumberOfFloors());
+		
 		System.out.println("===============================================================");
 		defaultStrategy.setDirection(-1);
 		int lCfD  = lift.getNumberOfFloors();
@@ -76,10 +77,12 @@ public class ControlClass {
 			for(Customer user : theHyde.getCustomerList()) {
 				if(lCfD == user.getDestinationFloor()) {
 					System.out.println("User/s on this floor: " + user);
+					//lift.customerJoins(user);
+					System.out.println("User/s on this floor: " + user);
 				}
 			}
 			if(lCfD != 0) {
-				System.out.println("\nCurrently on floor " + lCfD + " going down..");	
+				System.out.println("Floor: " + lCfD + " going down..");	
 			}
 			if(lCfD == 14) {
 				lCfD -= 2; 

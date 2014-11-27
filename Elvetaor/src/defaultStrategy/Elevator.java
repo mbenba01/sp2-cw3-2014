@@ -3,8 +3,6 @@ package defaultStrategy;
 import java.util.ArrayList;
 import java.util.Random;
 
-import classes.Customer;
-
 public class Elevator {
 	
 	 // instance variables 
