@@ -26,7 +26,7 @@ public class Elevator {
 		return currentFloor;
 	}
 	
-	public void move1() {
+	public void move() {
 		int i = currentFloor;
 
 		 switch (direction) {
@@ -66,7 +66,7 @@ public class Elevator {
 	 * The method to move the elevator by 1 floor
 	 * @param i represents the floors in the building
 	 */
-	public void move(){
+	public void move1(){
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
 			if(currentFloor==numOfFloors){ // in case lift is already on the last floor
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
@@ -105,6 +105,7 @@ public class Elevator {
 				continue;
 			}			 
 			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
+			// if you wan it to work with your move function just uncomment it !
 				this.move();
 		}
 		System.out.println("---------------------------------------------");
@@ -115,6 +116,7 @@ public class Elevator {
 			}
 			 
 			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
+			// if you wan it to work with your move function just uncomment it !
 			this.move();	
 		}
 	}
