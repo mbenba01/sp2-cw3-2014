@@ -7,15 +7,14 @@ public class Elevator {
 	private int numOfFloors;
 	private ArrayList<Customer> registerList;
 	private int currentFloor;
-	private byte direction;  // -1==going down; 0==stops; 1==going up
+	private int direction;  // -1==going down; 0==stops; 1==going up
 	
 	public Elevator(int f) {
 		
 		numOfFloors = f;
 		registerList = new ArrayList<Customer>();
-		//currentFloor = 0;
-		
-		direction = 1;
+		currentFloor = 0;
+		direction = 0;
 	}
 	
 	public int getNumOfFloors() {
@@ -26,7 +25,7 @@ public class Elevator {
 		return currentFloor;
 	}
 	
-	public void move() {
+	public void move2() {
 		int i = currentFloor;
 
 		 switch (direction) {
@@ -66,7 +65,7 @@ public class Elevator {
 	 * The method to move the elevator by 1 floor
 	 * @param i represents the floors in the building
 	 */
-	public void move1(){
+	public void move(){
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
 			if(currentFloor==numOfFloors){ // in case lift is already on the last floor
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
@@ -100,6 +99,7 @@ public class Elevator {
 	 * moves the elevator to the top of the building
 	 */
 	public void defautlStrategy() {
+		this.direction = 1;
 		for(int i = 0; i < getNumOfFloors(); i++) {
 			if(i == 13) {
 				continue;
@@ -143,5 +143,11 @@ public class Elevator {
 		}else{
 			System.out.println("Error. The customer is not anymore in the Elevator...");
 		}
+	}
+	public int getDirection(){
+		return direction;
+	}
+	public void setDirection(int i){
+		direction = i;
 	}
 }

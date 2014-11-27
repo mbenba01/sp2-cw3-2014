@@ -36,6 +36,8 @@ public class Building {
 		}
 
 		this.customerList = myList; // Store instances of Customer in myList
+		
+		this.setElevator();
 
 	}
 	
@@ -48,7 +50,7 @@ public class Building {
 	}
 	
 	public void setElevator() {
-		elevator = new Elevator(getNumberOfFloors());
+		elevator = new Elevator(this.getNumberOfFloors());
 	}
 	
 	public Elevator getElevator() {
@@ -57,6 +59,32 @@ public class Building {
 
 	public ArrayList<Customer> getCustomerList() {
 		return customerList;
+	}
+	
+	/**
+	 * moves the elevator to the top of the building
+	 */
+	public void defautlStrategy() {
+		elevator.setDirection(1);
+		for(int i = 0; i < elevator.getNumOfFloors(); i++) {
+			if(i == 13) {
+				continue;
+			}			 
+			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
+			// if you wan it to work with your move function just uncomment it !
+				elevator.move();
+		}
+		System.out.println("---------------------------------------------");
+		elevator.setDirection(-1);
+		for(int i = elevator.getNumOfFloors(); i > 0; i--) {
+			if(i == 13) {
+				continue;
+			}
+			 
+			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
+			// if you wan it to work with your move function just uncomment it !
+			elevator.move();	
+		}
 	}
 	
 }
