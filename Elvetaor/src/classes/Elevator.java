@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Elevator {
 	
 	private int numOfFloors;
-	private ArrayList<Customer> registerList;
+	public ArrayList<Customer> registerList;
 	private int currentFloor;
 	private int direction;  // -1==going down; 0==stops; 1==going up
 	
@@ -125,7 +125,7 @@ public class Elevator {
 	 * The method to add a Customer to the Elevator's registeList
 	 * @param c a Customer to be added to the registerList
 	 */
-	public void customerJoins(Customer c){
+	public void customerJoinsElevator(Customer c){
 		if(registerList.contains(c)){
 			System.out.println("Error. It apears that the customer already is in the Elevator...");
 			return;
@@ -137,7 +137,7 @@ public class Elevator {
 	 * The method to remove a Customer from the Elevator's registerList
 	 * @param c a Customer to be removed from the registerList
 	 */
-	public void customerLeaves(Customer c){
+	public void customerLeavesElevator(Customer c){
 		if(registerList.contains(c)) {
 			registerList.remove(c);
 		}else{

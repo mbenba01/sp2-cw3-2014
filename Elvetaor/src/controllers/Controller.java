@@ -29,7 +29,7 @@ public class Controller {
 		//Create new instance of Building
 		Building theHyde = new Building(15, 7);
 		//Elevator lift = new Elevator(15);
-		
+		System.out.println(theHyde.getCustomerList());
 		System.out.println("===============================================================");
 		System.out.println("Floors: " + theHyde.getNumberOfFloors());
 		System.out.println("Customers: " + theHyde.getNumberOfCustomers());

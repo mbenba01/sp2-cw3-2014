@@ -62,17 +62,18 @@ public class Building {
 	}
 	
 	/**
-	 * moves the elevator to the top of the building
+	 * moves the elevator from the bottom to the top of the building.
+	 * Checks (it will eventually) on each floor for customers willing to enter the lift and also checks if
+	 * any of the customers wants to leave the elevator
 	 */
 	public void defautlStrategy() {
 		elevator.setDirection(1);
 		for(int i = 0; i < elevator.getNumOfFloors(); i++) {
 			if(i == 13) {
 				continue;
-			}			 
-			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
-			// if you wan it to work with your move function just uncomment it !
-				elevator.move();
+			}
+			this.checkFloor(i);
+			elevator.move();
 		}
 		System.out.println("---------------------------------------------");
 		elevator.setDirection(-1);
@@ -80,11 +81,54 @@ public class Building {
 			if(i == 13) {
 				continue;
 			}
-			 
-			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
-			// if you wan it to work with your move function just uncomment it !
+			this.checkFloor(i);
 			elevator.move();	
 		}
 	}
-	
+	public void checkFloor(int f){
+		//System.out.println("checkFloor executed...!");
+		
+		for(int i = 0; i < this.customerList.size(); i++){
+			Customer c = this.customerList.get(i);
+			if(c.getCurrentFloor() == f){
+				System.out.println("customer " + c.getId() + " enters on the floor nr: "+ i);
+				//if(this.customerList.remove(c)) System.out.println(c);
+				//elevator.registerList.add(c);
+				customerJoinsElevator(c);
+				this.customerList.remove(i);
+			}
+		}
+		for(int i = 0; i < elevator.registerList.size(); i++){
+			Customer c = elevator.registerList.get(i);
+			if(c.getDestinationFloor() == f){
+				System.out.println("customer " + c.getId() + " exits on floor nr: " + i);
+				//if(elevator.registerList.remove(c)) System.out.println(c);
+				customerLeavesElevator(c);
+				//elevator.registerList.remove(i);
+			}
+		}
+	}
+	/**
+	 * The method to add a Customer to the Elevator's registeList
+	 * @param c a Customer to be added to the registerList
+	 */
+	public void customerJoinsElevator(Customer c){
+		if(elevator.registerList.contains(c)){
+			System.out.println("Error. It apears that the customer already is in the Elevator...");
+			return;
+		}else{
+			elevator.registerList.add(c);
+		}
+	}
+	/**
+	 * The method to remove a Customer from the Elevator's registerList
+	 * @param c a Customer to be removed from the registerList
+	 */
+	public void customerLeavesElevator(Customer c){
+		if(elevator.registerList.contains(c)) {
+			elevator.registerList.remove(c);
+		}else{
+			System.out.println("Error. The customer is not anymore in the Elevator...");
+		}
+	}	
 }
