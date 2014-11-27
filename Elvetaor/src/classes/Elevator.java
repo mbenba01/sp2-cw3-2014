@@ -26,7 +26,8 @@ public class Elevator {
 		return currentFloor;
 	}
 	
-	public void move(int i) {
+	public void move1() {
+		int i = currentFloor;
 
 		 switch (direction) {
 		 	case 1 :
@@ -37,7 +38,6 @@ public class Elevator {
 		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
 		 				i += 2;
 		 			} else {
-		 				
 		 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
 		 				i += 1;
 		 			}
@@ -66,31 +66,30 @@ public class Elevator {
 	 * The method to move the elevator by 1 floor
 	 * @param i represents the floors in the building
 	 */
-	public void move1(int i){
+	public void move(){
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
-			if(i==numOfFloors){ // in case lift is already on the last floor
+			if(currentFloor==numOfFloors){ // in case lift is already on the last floor
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
 			}else {
-				if(i == 12) {
-	 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
-	 				i += 2;
-	 			} else {
-	 				System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
-	 				i += 1;
-	 			}
+				if(currentFloor==12){
+					System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor+2)+" floor. Going up!");
+					currentFloor+=2;
+				}else{
+					System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor+1)+" floor. Going up!");
+					currentFloor +=1;
+				}
 			}
-			
 		}else if(direction==-1){ // if direction is set to -1 lift will move one floor down
-			if(i==0){
+			if(currentFloor==0){
 				System.out.println("Error. Cannot go down anymore as lift is on the ground floor.");
 			}else{
-				
-				System.out.println("Currently on "+ i +" floor "+" going to "+(i - 1)+" floor. Going down!");
-				if(i == 13) {
-					i--;
+				if(currentFloor==14){
+					System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor-2)+" floor. Going down!");
+					currentFloor-=2;
+				}else{
+					System.out.println("Currently on "+currentFloor+" floor "+" going to "+(currentFloor-1)+" floor. Going down!");
+					currentFloor -=1;
 				}
-				
-				i -= 1;
 			}
 		}else { // if direction is set to 0 or anything else lift will not move
 			System.out.println("Error! I cannot move as lift has no direction set. \nPlease set direction first!");
@@ -101,22 +100,22 @@ public class Elevator {
 	 * moves the elevator to the top of the building
 	 */
 	public void defautlStrategy() {
-		for(int i = 0; i <= getNumOfFloors(); i++) {
+		for(int i = 0; i < getNumOfFloors(); i++) {
 			if(i == 13) {
 				continue;
 			}			 
-			this.currentFloor = i;
-				move(currentFloor);
+			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
+				this.move();
 		}
 		System.out.println("---------------------------------------------");
 		direction = -1;
-		for(int i = getNumOfFloors(); i > 0  - 1; i--) {
+		for(int i = getNumOfFloors(); i > 0; i--) {
 			if(i == 13) {
 				continue;
 			}
 			 
-			this.currentFloor = i;
-			move(currentFloor);	
+			//this.currentFloor = i; // we need current floor to be set by function move not somewhere else ;-)
+			this.move();	
 		}
 	}
 	
