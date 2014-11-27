@@ -84,24 +84,26 @@ public class Building {
 			this.checkFloor(i);
 			elevator.move();	
 		}
+		// just some tests...
+		System.out.println("======================================================");
+		System.out.println("elevator register list size: " + elevator.registerList.size());
+		System.out.println("building customer list size: " + this.customerList.size());
 	}
-	public void checkFloor(int f){
-		//System.out.println("checkFloor executed...!");
-		
+	public void checkFloor(int f){		
 		for(int i = 0; i < this.customerList.size(); i++){
 			Customer c = this.customerList.get(i);
 			if(c.getCurrentFloor() == f){
-				System.out.println("customer " + c.getId() + " enters on the floor nr: "+ i);
+				System.out.println("customer " + c.getId() + " enters on the floor nr: "+ f);
 				//if(this.customerList.remove(c)) System.out.println(c);
 				//elevator.registerList.add(c);
 				customerJoinsElevator(c);
-				this.customerList.remove(i);
+				this.customerList.remove(c);
 			}
 		}
 		for(int i = 0; i < elevator.registerList.size(); i++){
 			Customer c = elevator.registerList.get(i);
 			if(c.getDestinationFloor() == f){
-				System.out.println("customer " + c.getId() + " exits on floor nr: " + i);
+				System.out.println("customer " + c.getId() + " exits on floor nr: " + f);
 				//if(elevator.registerList.remove(c)) System.out.println(c);
 				customerLeavesElevator(c);
 				//elevator.registerList.remove(i);

@@ -21,14 +21,19 @@ public class Customer {
 		
 		if(i == 13) {
 			currentFloor = i + 1;
-		} else {
+		}else {
+		
 			currentFloor = i;
 		}
 		
 		if(j == 13) {
-			destinationFloor = j + i;
+			destinationFloor = j + 1;
 		} else {
 			destinationFloor = j;
+		}
+		if(i==j){
+			System.out.println(this.id + " current and destination were the same !!");
+			destinationFloor = (i+j+3)%f;
 		}
 
 	}
