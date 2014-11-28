@@ -14,26 +14,15 @@ public class Customer {
 		this.id = id;
 		Random ran = new Random();
 		
-		
 		int i = ran.nextInt(f+1);
 		int j = ran.nextInt(f+1);
 		
+		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
 		
-		if(i == 13) {
-			currentFloor = i + 1;
-		}else {
+		diffderenciate(i, j, f); // ensure that destinationFloor is different from currentFloor
 		
-			currentFloor = i;
-		}
-		if(i==j){
-			System.out.println(this.id + " current and destination were the same !!");
-			destinationFloor = (i+j+3)%f;
-		}
-		if(j == 13) {
-			destinationFloor = j + 1;
-		} else {
-			destinationFloor = j;
-		}
+		this.destinationFloor = removeThirteen(j); // remove thirteen from possible random numbers
+	
 	}
 	
 	public int getId() {
@@ -50,8 +39,38 @@ public class Customer {
 	public int getDestinationFloor() {
 		return destinationFloor;
 	}
+	
 	public void setDestinationFloor(int i){
 		this.destinationFloor = i;
+	}
+	
+	/** ensures the elevator does not stop on thirteenth floor
+	 * 
+	 * @param i represents the current floor of customer
+	 * @return the current floor of the customer
+	 */
+	public int removeThirteen(int i) {
+		int temp;
+		if(i == 13) {
+			temp = i + 1 ;
+		} else {
+			temp = i;
+		}
+		return temp;
+	}
+	
+	/**
+	 * Ensures destinationFloor is different from currentFloor
+	 * @param i represents currentFloor
+	 * @param j represents destinationFloor
+	 * @param f represents numberOfFloors
+	 * @return destinationFloor
+	 */
+	public void diffderenciate(int i, int j, int f) {
+		if(i==j){
+			System.out.println(this.id + " current and destination were the same !!");
+			destinationFloor = (i+j+3)%f;
+		}
 	}
 	
 	@Override
