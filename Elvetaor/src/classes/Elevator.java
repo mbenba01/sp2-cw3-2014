@@ -69,7 +69,7 @@ public class Elevator {
 		//System.out.println("Currently on "+currentFloor+" floor ");
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
 			if(currentFloor==numOfFloors){ // in case lift is already on the last floor
-				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");
+				System.out.println("You have reached the last floor!");
 			}else {
 				if(currentFloor==12){
 					System.out.println("going to "+(currentFloor+2)+" floor. Going up!");
@@ -81,7 +81,7 @@ public class Elevator {
 			}
 		}else if(direction==-1){ // if direction is set to -1 lift will move one floor down
 			if(currentFloor==0){
-				System.out.println("Error. Cannot go down anymore as lift is on the ground floor.");
+				System.out.println("You have reached the ground floor!");
 			}else{
 				if(currentFloor==14){
 					System.out.println("going to "+(currentFloor-2)+" floor. Going down!");

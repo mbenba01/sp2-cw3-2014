@@ -89,7 +89,10 @@ public static void main(String[] args) {
 				continue;
 			}
 			this.checkFloor(i);
-			if(i<elevator.getNumOfFloors())elevator.move();
+			elevator.move();
+			
+			/*this.checkFloor(i);
+			if(i<elevator.getNumOfFloors())elevator.move();*/
 		}
 		System.out.println("---------------------------------------------");
 		elevator.setDirection(-1);
@@ -97,8 +100,12 @@ public static void main(String[] args) {
 			if(i == 13) {
 				continue;
 			}
+			
 			this.checkFloor(i);
-			if(i>0)elevator.move();	
+			elevator.move();
+			
+			/*this.checkFloor(i);
+			if(i>0)elevator.move();	*/
 		}
 		// just some tests...
 		System.out.println("======================================================");
