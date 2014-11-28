@@ -68,7 +68,7 @@ public class Building {
 	 */
 	public void defautlStrategy() {
 		elevator.setDirection(1);
-		for(int i = 0; i < elevator.getNumOfFloors(); i++) {
+		for(int i = 0; i <= elevator.getNumOfFloors(); i++) {
 			if(i == 13) {
 				continue;
 			}
@@ -77,7 +77,7 @@ public class Building {
 		}
 		System.out.println("---------------------------------------------");
 		elevator.setDirection(-1);
-		for(int i = elevator.getNumOfFloors(); i > 0; i--) {
+		for(int i = elevator.getNumOfFloors(); i >= 0; i--) {
 			if(i == 13) {
 				continue;
 			}
@@ -105,8 +105,8 @@ public class Building {
 			if(c.getDestinationFloor() == f){
 				System.out.println("customer " + c.getId() + " exits on floor nr: " + f);
 				//if(elevator.registerList.remove(c)) System.out.println(c);
-				customerLeavesElevator(c);
-				//elevator.registerList.remove(i);
+				//customerLeavesElevator(c);
+				elevator.registerList.remove(i);
 			}
 		}
 	}

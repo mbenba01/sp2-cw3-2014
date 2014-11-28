@@ -46,6 +46,14 @@ public class Customer {
 		return destinationFloor;
 	}
 	
+	public boolean getInElevator() {
+		return inElevator;
+	}
+	
+	public boolean setInElevator(int cf, int lcf) {
+		return (cf == lcf);
+	}
+	
 	/** ensures the elevator does not stop on thirteenth floor
 	 * 
 	 * @param i represents the current floor of customer

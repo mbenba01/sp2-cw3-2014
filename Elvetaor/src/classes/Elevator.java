@@ -66,7 +66,7 @@ public class Elevator {
 	 * @param i represents the floors in the building
 	 */
 	public void move(){
-		System.out.println("Currently on "+currentFloor+" floor ");
+		//System.out.println("Currently on "+currentFloor+" floor ");
 		if(direction==1){ // if direction is set to 1 lift will move one floor up
 			if(currentFloor==numOfFloors){ // in case lift is already on the last floor
 				System.out.println("Error. Cannot go up anymore as lift is on the last floor.");

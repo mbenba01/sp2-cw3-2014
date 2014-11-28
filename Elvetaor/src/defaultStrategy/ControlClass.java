@@ -10,7 +10,7 @@ public class ControlClass {
 	public static Scanner in;
 	private static Building theHyde;
 	private static Elevator lift;
-	private Customer user;
+	private static Customer user;
 	private static DefaultStrategy defaultStrategy;
 
 	
@@ -55,30 +55,33 @@ public class ControlClass {
 			}
 			for(Customer user : theHyde.getCustomerList()) {
 				if(lCfU == user.getCurrentFloor()) {
+					
 					System.out.println("User/s on this floor: " + user);
+					lift.customerJoins(user);
+					
+					
 				}
 			}
 			
 			if(lCfU == 12) {
 				lCfU += 2; 
-			} else {
+			} else { 
 				lCfU++;
 			}
 			
+			
 		}
-		defaultStrategy.moveUp(lift.getNumberOfFloors());
+		//defaultStrategy.moveUp(lift.getNumberOfFloors());
 		
 		System.out.println("===============================================================");
 		defaultStrategy.setDirection(-1);
 		int lCfD  = lift.getNumberOfFloors();
 		while(lCfD >= 0) {
-			
-			
+
 			for(Customer user : theHyde.getCustomerList()) {
 				if(lCfD == user.getDestinationFloor()) {
 					System.out.println("User/s on this floor: " + user);
-					//lift.customerJoins(user);
-					System.out.println("User/s on this floor: " + user);
+					lift.customerLeaves(user);
 				}
 			}
 			if(lCfD != 0) {
@@ -92,6 +95,9 @@ public class ControlClass {
 			
 		}
 		defaultStrategy.moveDown(lift.getNumberOfFloors());
+		System.out.println("======================================================");
+		System.out.println("elevator register list size: " + lift.getRegisterList().size());
+		System.out.println("building customer list size: " + theHyde.getCustomerList().size());
 		
 	}
 
