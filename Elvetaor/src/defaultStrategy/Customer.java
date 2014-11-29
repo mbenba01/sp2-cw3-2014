@@ -13,12 +13,7 @@ public class Customer {
 	private boolean finished; // Flag to denote if customer is in elevator
 	
 	private static Random rGen = new Random(); // new random number generator
-	
-	public Customer(int id, int cF, int dF) {
-		this.id = id;
-		this.currentFloor = cF; // removeThirteen(i); // remove thirteen from possible random numbers 
-		this.destinationFloor = dF; // removeThirteen(j); // remove thirteen from possible random numbers
-	}
+
 	
 	/**
 	 * Constructs instances of Customer

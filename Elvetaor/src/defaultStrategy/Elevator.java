@@ -52,8 +52,8 @@ public class Elevator {
 	 
 	 /** 
 	  * 
-	  * @param i
-	  * @return
+	  * @param i represents the customer current floor
+	  * @return direction
 	  */
 	 public byte setDirection(int i) {
 		 
@@ -73,27 +73,35 @@ public class Elevator {
 
 		 switch (direction) {
 		 	case 1 :
-		 		if(i == numberOfFloors) {
+		 		if(i == numberOfFloors) 
+		 		{
 		 			System.out.println("Reached the last floor!");
-		 		} else {
-		 			if(i == 12) {
-		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 2));
+		 		} 
+		 		else 
+		 		{
+		 			if(i == 12) 
+		 			{
 		 				i += 2;
-		 			} else {
-		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i + 1));
+		 			} 
+		 			else
+		 			{
 		 				i += 1;
 		 			}
 		 		}
 		 	break;
 		 	case -1 :
-		 		if(i == 0) {
+		 		if(i == 0) 
+		 		{
 		 			System.out.println("Reached the ground floor!");
-		 		} else {
-		 			if(i == 14) {
-		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i - 2));
+		 		} 
+		 		else 
+		 		{
+		 			if(i == 14) 
+		 			{
 		 				i -= 2;
-		 			} else {
-		 				//System.out.println("Currently on floor " + i + "  going to floor " + (i - 1));
+		 			} 
+		 			else 
+		 			{
 		 				i -= 1;
 		 			}
 	 				
