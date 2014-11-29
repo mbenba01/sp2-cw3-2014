@@ -30,8 +30,8 @@ public class Customer {
 		int i = rGen.nextInt(f); // range 0 - number of floors
 		int j = rGen.nextInt(f); // range 0 - number of floors
 		
-		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
-		this.destinationFloor = removeThirteen(j); // remove thirteen from possible random numbers
+		this.currentFloor = removeThirteen(i + 1); // remove thirteen from possible random numbers 
+		this.destinationFloor = removeThirteen(j + 1); // remove thirteen from possible random numbers
 	}
 	
 	public int getId() {
@@ -48,10 +48,6 @@ public class Customer {
 	
 	public boolean getInElevator() {
 		return inElevator;
-	}
-	
-	public boolean setInElevator(int cf, int lcf) {
-		return (cf == lcf);
 	}
 	
 	/** ensures the elevator does not stop on thirteenth floor
@@ -75,30 +71,16 @@ public class Customer {
 	 */
 	public void callElevator(int currentFloor) {
 		
-		if(this.currentFloor == currentFloor) 
+		if(this.currentFloor != currentFloor) 
 		{
-			System.out.println("Cling!");
-		} 
-		else if(this.currentFloor > currentFloor) 
-		{
-			for(int i = currentFloor; i <= this.currentFloor; i++) {
-				if(i == 13) {
-					continue;
-				}
-				//System.out.println("Lift going up: " + i);
+			if(this.currentFloor > currentFloor) 
+			{
+				for(int i = currentFloor; i <= this.currentFloor; i++) {
+					if(i == 13) {
+						continue;
+					}
 				currentFloor = i;
-			}
-			System.out.println("You are in floor: " + currentFloor);
-			
-		}
-		else
-		{
-			for(int i = currentFloor; i >= this.currentFloor; i--) {
-				if(i == 13) {
-					continue;
 				}
-				//System.out.println("Lift going down: " + i);
-				currentFloor = i;
 			}
 		}
 	}

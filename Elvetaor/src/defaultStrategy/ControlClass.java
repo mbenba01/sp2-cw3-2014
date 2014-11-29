@@ -33,7 +33,7 @@ public class ControlClass {
 		//Create new instance of Building
 		theHyde = new Building(15, 7);
 		lift = new Elevator(15);
-		defaultStrategy = new DefaultStrategy(lift.getNumberOfFloors(), lift.getCurrentFloor());
+		//defaultStrategy = new DefaultStrategy(lift.getNumberOfFloors(), lift.getCurrentFloor());
 		
 		//Code belowoutputs the number of floors in the building, the number of customers and the list of customers. 
 		
@@ -43,60 +43,54 @@ public class ControlClass {
 		System.out.println("===============================================================");
 		System.out.println("Customer list: " + theHyde.getCustomerList());
 		System.out.println("===============================================================");
-
 		
-		defaultStrategy.setDirection(1);
-		//user.callElevator(lift.getCurrentFloor());
-		
-		int lCfU  = 0; // lift.getCurrentFloor();
-		while(lCfU <= lift.getNumberOfFloors()) {
-			if(lCfU != lift.getNumberOfFloors()) {
-				System.out.println("Floor: " + lCfU + " going up..");
+		for(int i = 0; i <= theHyde.getCustomerList().size(); i++) {
+			user = theHyde.getCustomerList().get(i);
+			theHyde.efficientStrategy(user, lift.getCurrentFloor());
+			break;
+		}
+		//int index = this.getCustomerList().size();
+		for(int i = 0; i <= theHyde.getCustomerList().size(); i++) {
+			if(user.getInElevator()) {
+				theHyde.getCustomerList().remove(user);
+				System.out.println("Building customer list size: " + theHyde.getCustomerList().size());
+					//index--;
 			}
+		}
+		
+		
+		/*int lCfU  = 0;
+		while(lCfU <= lift.getNumberOfFloors()) {
 			for(Customer user : theHyde.getCustomerList()) {
 				if(lCfU == user.getCurrentFloor()) {
-					
 					System.out.println("User/s on this floor: " + user);
 					lift.customerJoins(user);
-					
-					
 				}
 			}
-			
 			if(lCfU == 12) {
 				lCfU += 2; 
 			} else { 
 				lCfU++;
-			}
-			
-			
+			}			
 		}
-		//defaultStrategy.moveUp(lift.getNumberOfFloors());
 		
 		System.out.println("===============================================================");
-		defaultStrategy.setDirection(-1);
 		int lCfD  = lift.getNumberOfFloors();
 		while(lCfD >= 0) {
-
 			for(Customer user : theHyde.getCustomerList()) {
 				if(lCfD == user.getDestinationFloor()) {
 					System.out.println("User/s on this floor: " + user);
 					lift.customerLeaves(user);
 				}
 			}
-			if(lCfD != 0) {
-				System.out.println("Floor: " + lCfD + " going down..");	
-			}
 			if(lCfD == 14) {
 				lCfD -= 2; 
 			} else {
 				lCfD--;
-			}
-			
-		}
-		defaultStrategy.moveDown(lift.getNumberOfFloors());
+			}			
+		}*/
 		System.out.println("======================================================");
-		System.out.println("elevator register list size: " + lift.getRegisterList().size());
+		
 		System.out.println("building customer list size: " + theHyde.getCustomerList().size());
 		
 	}

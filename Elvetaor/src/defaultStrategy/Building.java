@@ -38,7 +38,7 @@ public class Building {
 		}
 
 		this.customerList = myList; // Store instances of Customer in myList
-
+		setElevator();
 	}
 	
 	public Building() {
@@ -69,6 +69,24 @@ public class Building {
 		return liftUser;
 	}
 	
-	
-	
+	/**
+	 * 
+	 * @param c represents the elevator's current floor
+	 */
+	public void efficientStrategy(Customer e, int c) {
+		c = 0;
+		while(c <= this.getNumberOfFloors()) {
+			for(Customer user: this.getCustomerList()) {
+				e = user;
+				if(c == e.getCurrentFloor()) {
+					e.callElevator(elevator.getCurrentFloor());
+					System.out.println("Customer " + user.getId() + " is on floor: " + e.getCurrentFloor());
+					elevator.customerJoins(e);
+					System.out.println("elevator register list size: " + elevator.getRegisterList().size());
+					user.getInElevator();	
+				}
+			}
+			c++;
+		}
+	}
 }
