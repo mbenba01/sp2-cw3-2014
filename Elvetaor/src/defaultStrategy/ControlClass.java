@@ -47,16 +47,17 @@ public class ControlClass {
 		for(int i = 0; i <= theHyde.getCustomerList().size(); i++) {
 			user = theHyde.getCustomerList().get(i);
 			theHyde.efficientStrategy(user, lift.getCurrentFloor());
+			for(int j = 0; j <= theHyde.getCustomerList().size(); j++) {
+				if(user.getInElevator()) {
+					theHyde.getCustomerList().remove(j);
+					System.out.println("Building customer list size: " + theHyde.getCustomerList().size());
+						//index--;
+				}
+			}
 			break;
 		}
 		//int index = this.getCustomerList().size();
-		for(int i = 0; i <= theHyde.getCustomerList().size(); i++) {
-			if(user.getInElevator()) {
-				theHyde.getCustomerList().remove(user);
-				System.out.println("Building customer list size: " + theHyde.getCustomerList().size());
-					//index--;
-			}
-		}
+		
 		
 		
 		/*int lCfU  = 0;

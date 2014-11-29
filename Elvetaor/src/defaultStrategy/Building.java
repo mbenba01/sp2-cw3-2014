@@ -30,15 +30,15 @@ public class Building {
 		this.numberOfFloors = f; // Number of floors in the building
 		numberOfCustomers = c;   // Number of customers in the building
 		
-		setElevator();
 		ArrayList<Customer> myList = new ArrayList<>(); // Create ArrayList of type Customer
-
+		
+		
 		for(int j = 1; j <= c; j++) {
 			myList.add(new Customer(j, numberOfFloors)); // Add instances of Customer to ArrayList	
 		}
 
 		this.customerList = myList; // Store instances of Customer in myList
-		
+		setElevator();
 	}
 	
 	public Building() {
@@ -85,6 +85,7 @@ public class Building {
 					System.out.println("elevator register list size: " + elevator.getRegisterList().size());
 					user.getInElevator();	
 				}
+				
 			}
 			c++;
 		}

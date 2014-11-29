@@ -42,7 +42,7 @@ public class Customer {
 	}
 	
 	public boolean getInElevator() {
-		return inElevator;
+		return true;
 	}
 	
 	/** ensures the elevator does not stop on thirteenth floor
