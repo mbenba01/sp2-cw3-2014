@@ -45,17 +45,20 @@ public class ControlClass {
 		System.out.println("===============================================================");
 		int lcf = lift.getCurrentFloor();
 		for(int i = 0; i <= theHyde.getNumberOfFloors(); i++) {
+			
 			user = theHyde.getCustomerList().get(i);
 			theHyde.efficientStrategy(user, lift.getCurrentFloor());
-			for(int j = theHyde.getNumberOfFloors(); j > 0; j--) {
-				if(user.getInElevator()) {
-					theHyde.getCustomerList().remove(i);
-					System.out.println("Customer cf: " + user.getCurrentFloor() + "\tlift cf: " + lcf);
-					System.out.println("Building customer list size: " + theHyde.getCustomerList().size());
-				}
-				
-				
+			lcf = i;
+			if(user.getInElevator()) {
+				theHyde.getCustomerList().remove(i);
+				System.out.println("Customer cf: " + user.getCurrentFloor() + "\tlift cf: " + lcf);
+				System.out.println("Building customer list size: " + theHyde.getCustomerList().size());
 			}
+			/*for(int j = 1; j <= theHyde.getNumberOfFloors(); j++) {
+				
+				
+				
+			}*/
 			break;
 		}
 		//int index = this.getCustomerList().size();
