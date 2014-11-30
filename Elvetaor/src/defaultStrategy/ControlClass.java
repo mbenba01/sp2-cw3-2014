@@ -35,7 +35,7 @@ public class ControlClass {
 		lift = new Elevator(15);
 		//defaultStrategy = new DefaultStrategy(lift.getNumberOfFloors(), lift.getCurrentFloor());
 		
-		//Code belowoutputs the number of floors in the building, the number of customers and the list of customers. 
+		//Code below outputs the number of floors in the building, the number of customers and the list of customers. 
 		
 		System.out.println("===============================================================");
 		System.out.println("Floors: " + theHyde.getNumberOfFloors());
