@@ -83,7 +83,7 @@ public class Building {
 					System.out.println("Customer " + user.getId() + " is on floor: " + e.getCurrentFloor());
 					elevator.customerJoins(e);
 					System.out.println("elevator register list size: " + elevator.getRegisterList().size());
-					
+					//user.getInElevator();	
 				}
 				
 			}

@@ -43,7 +43,7 @@ public class ControlClass {
 		System.out.println("===============================================================");
 		System.out.println("Customer list: " + theHyde.getCustomerList());
 		System.out.println("===============================================================");
-		int lcf = lift.getCurrentFloor();
+		int lcf = lift.getCurrentFloor(); //lift current floor
 		for(int i = 0; i <= theHyde.getNumberOfFloors(); i++) {
 			
 			user = theHyde.getCustomerList().get(i);
@@ -51,24 +51,7 @@ public class ControlClass {
 			break;
 			
 		}
-		while(lcf <= theHyde.getNumberOfFloors()) {
-		for(Customer user : theHyde.getCustomerList()) {
-			//System.out.println(theHyde.getCustomerList().indexOf(user));
-			if(user.getCurrentFloor() == lcf) {
-				System.out.println("-----------");
-				System.out.println("Customer cf: " + user.getCurrentFloor() + "\tlift cf: " + lcf);
-				if(lift.getRegisterList().contains(user)) {
-					theHyde.getCustomerList().remove(user);
-					System.out.println("Customer list size: " + theHyde.getCustomerList().size());
-				}
-				//theHyde.getCustomerList().remove(user);
-
-				
-			}
 		
-		}
-		lcf++;
-		}
 		
 		
 		

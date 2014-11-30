@@ -121,23 +121,14 @@ public class Elevator {
 		 * @param c a Customer to be added to the registerList
 		 */
 		public void customerJoins(Customer c){
-			if(registerList.contains(c)){
-				System.out.println("Error. It apears that the customer already is in the Elevator...");
-				return;
-			}else{
 				registerList.add(c);
-			}
 		}
 		/**
 		 * The method to remove a Customer from the Elevator's registerList
 		 * @param c a Customer to be removed from the registerList
 		 */
 		public void customerLeaves(Customer c){
-			if(registerList.contains(c)) {
 				registerList.remove(c);
-			}else{
-				System.out.println("Error. The customer is not anymore in the Elevator...");
-			}
 		}
 	 
 }
