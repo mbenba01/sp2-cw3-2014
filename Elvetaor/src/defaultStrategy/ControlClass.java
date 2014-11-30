@@ -11,7 +11,7 @@ public class ControlClass {
 	private static Building theHyde;
 	private static Elevator lift;
 	private static Customer user;
-	private static DefaultStrategy defaultStrategy;
+
 
 	
 	public static void main(String[] args) {
@@ -55,18 +55,21 @@ public class ControlClass {
 		for(Customer user : theHyde.getCustomerList()) {
 			//System.out.println(theHyde.getCustomerList().indexOf(user));
 			if(user.getCurrentFloor() == lcf) {
-			System.out.println("Customer cf: " + user.getCurrentFloor() + "\tlift cf: " + lcf);
-			//theHyde.getCustomerList().remove(user);
-			
-			}
-			/*if(user.getInElevator()) {
-				theHyde.getCustomerList().remove(i);
+				System.out.println("-----------");
 				System.out.println("Customer cf: " + user.getCurrentFloor() + "\tlift cf: " + lcf);
-				System.out.println("Building customer list size: " + theHyde.getCustomerList().size());
-			}*/
+				if(lift.getRegisterList().contains(user)) {
+					theHyde.getCustomerList().remove(user);
+					System.out.println("Customer list size: " + theHyde.getCustomerList().size());
+				}
+				//theHyde.getCustomerList().remove(user);
+
+				
+			}
+		
 		}
 		lcf++;
 		}
+		
 		
 		
 		
