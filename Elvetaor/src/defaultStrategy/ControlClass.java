@@ -48,20 +48,46 @@ public class ControlClass {
 			
 			user = theHyde.getCustomerList().get(i);
 			theHyde.efficientStrategy(user, lift.getCurrentFloor());
-			lcf = i;
-			if(user.getInElevator()) {
+			break;
+			
+		}
+		while(lcf <= theHyde.getNumberOfFloors()) {
+		for(Customer user : theHyde.getCustomerList()) {
+			//System.out.println(theHyde.getCustomerList().indexOf(user));
+			if(user.getCurrentFloor() == lcf) {
+			System.out.println("Customer cf: " + user.getCurrentFloor() + "\tlift cf: " + lcf);
+			//theHyde.getCustomerList().remove(user);
+			
+			}
+			/*if(user.getInElevator()) {
 				theHyde.getCustomerList().remove(i);
 				System.out.println("Customer cf: " + user.getCurrentFloor() + "\tlift cf: " + lcf);
 				System.out.println("Building customer list size: " + theHyde.getCustomerList().size());
-			}
-			/*for(int j = 1; j <= theHyde.getNumberOfFloors(); j++) {
-				
-				
-				
 			}*/
-			break;
 		}
-		//int index = this.getCustomerList().size();
+		lcf++;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
