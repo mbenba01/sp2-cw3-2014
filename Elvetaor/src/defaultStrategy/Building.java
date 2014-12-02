@@ -84,21 +84,23 @@ public class Building {
 			for(Customer user: this.getCustomerList()) {
 				e = user;
 				if(c == e.getCurrentFloor()) {
+					
 					e.callElevator(elevator.getCurrentFloor());
 					System.out.print("Customer " + e.getId() + " is on floor: " + e.getCurrentFloor());
+					elevator.customerJoins(e);
 					for(int i = 0; i <= elevator.getRegisterList().size(); i++) {
-						System.out.print("\tgoing to floor " + e.getDestinationFloor());
+						//System.out.print(" going to floor " + e.getDestinationFloor());
+						destinationFloors[i] = e.getDestinationFloor();
+						System.out.print(" going to floor " + destinationFloors[i]);
 						break;
 					}
 					System.out.println("");
-					elevator.customerJoins(e);
 					System.out.println("elevator register list size: " + elevator.getRegisterList().size());
-					numberOfStops++;
-					
+					numberOfStops++; // sums the number of stops the elevator makes 
 				}
-				
 			}
 			c++;		
 		}
+		System.out.println(numberOfStops);
 	}
 }
