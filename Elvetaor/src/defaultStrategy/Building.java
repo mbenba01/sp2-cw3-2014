@@ -101,6 +101,7 @@ public class Building {
 			}
 			c++;		
 		}
-		System.out.println(numberOfStops);
+		System.out.println("The elevator has made " + numberOfStops + " stops");
+		
 	}
 }
