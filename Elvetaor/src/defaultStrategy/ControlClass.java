@@ -43,7 +43,7 @@ public class ControlClass {
 		System.out.println("===============================================================");
 		System.out.println("Customer list: " + theHyde.getCustomerList());
 		System.out.println("===============================================================");
-		int lcf = lift.getCurrentFloor(); //lift current floor
+		//int lcf = lift.getCurrentFloor(); //lift current floor
 		for(int i = 0; i <= theHyde.getNumberOfFloors(); i++) {
 			
 			user = theHyde.getCustomerList().get(i);

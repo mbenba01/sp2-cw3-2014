@@ -1,6 +1,8 @@
 package defaultStrategy;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The Building class stores the number of floors and and the number of customers
@@ -75,19 +77,28 @@ public class Building {
 	 */
 	public void efficientStrategy(Customer e, int c) {
 		c = 0;
+		int numberOfStops = 0;
+		int[] destinationFloors = new int[this.numberOfCustomers];
+		
 		while(c <= this.getNumberOfFloors()) {
 			for(Customer user: this.getCustomerList()) {
 				e = user;
 				if(c == e.getCurrentFloor()) {
 					e.callElevator(elevator.getCurrentFloor());
-					System.out.println("Customer " + user.getId() + " is on floor: " + e.getCurrentFloor());
+					System.out.print("Customer " + e.getId() + " is on floor: " + e.getCurrentFloor());
+					for(int i = 0; i <= elevator.getRegisterList().size(); i++) {
+						System.out.print("\tgoing to floor " + e.getDestinationFloor());
+						break;
+					}
+					System.out.println("");
 					elevator.customerJoins(e);
 					System.out.println("elevator register list size: " + elevator.getRegisterList().size());
-					//user.getInElevator();	
+					numberOfStops++;
+					
 				}
 				
 			}
-			c++;
+			c++;		
 		}
 	}
 }
