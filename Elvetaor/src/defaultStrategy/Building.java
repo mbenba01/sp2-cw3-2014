@@ -94,6 +94,7 @@ public class Building {
 						System.out.print(" going to floor " + destinationFloors[i]);
 						break;
 					}
+					
 					System.out.println("");
 					System.out.println("elevator register list size: " + elevator.getRegisterList().size());
 					numberOfStops++; // sums the number of stops the elevator makes 
@@ -103,5 +104,20 @@ public class Building {
 		}
 		System.out.println("The elevator has made " + numberOfStops + " stops");
 		
+		for(int i = 0; i <this.customerList.size(); i++) {
+			e = this.getCustomerList().get(i);
+			if(e.getCurrentFloor() < e.getDestinationFloor()) {
+				System.out.println("Customer " + e.getId() + " is going up!");
+			} 
+			else if(e.getCurrentFloor() > e.getDestinationFloor()) 
+			{
+				System.out.println("Customer " + e.getId() + " is going down!");
+			} 
+			else 
+			{
+				System.out.println("Customer " + e.getId() + " is staying put!");
+			} 
+		}
 	}
+	
 }

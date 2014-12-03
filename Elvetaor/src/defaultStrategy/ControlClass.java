@@ -45,7 +45,6 @@ public class ControlClass {
 		System.out.println("===============================================================");
 
 		theHyde.efficientStrategy(user, lift.getCurrentFloor());
-
 		
 		
 		
