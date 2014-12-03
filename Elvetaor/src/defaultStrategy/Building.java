@@ -84,8 +84,7 @@ public class Building {
 			for(Customer user: this.getCustomerList()) {
 				e = user;
 				if(c == e.getCurrentFloor()) {
-					
-					e.callElevator(elevator.getCurrentFloor());
+					//.callElevator(elevator.getCurrentFloor());
 					System.out.print("Customer " + e.getId() + " is on floor: " + e.getCurrentFloor());
 					elevator.customerJoins(e);
 					for(int i = 0; i <= elevator.getRegisterList().size(); i++) {
