@@ -64,7 +64,7 @@ public class Customer {
 	 * allows the customer in the building to call the lift
 	 * @param currentFloor represents the position of the elevator
 	 */
-	public void callElevator(int currentFloor) {
+	/*public void callElevator(int currentFloor) {
 		
 		if(this.currentFloor != currentFloor) 
 		{
@@ -78,7 +78,7 @@ public class Customer {
 				}
 			}
 		}
-	}
+	}*/
 	
 	@Override
 	public int hashCode() {
