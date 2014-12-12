@@ -21,7 +21,7 @@ public class CustomerTest {
 		int expectedOutput = i+j+3%15;
 		
 		
-		user.diffderenciate(i, j, f);
+		user.differenciate(i, j, f);
 		int currentOutput = user.getDestinationFloor();
 		assertEquals("Wrong answer!", expectedOutput, currentOutput);
 		

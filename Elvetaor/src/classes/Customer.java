@@ -19,7 +19,7 @@ public class Customer {
 		
 		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
 		
-		diffderenciate(i, j, f); // ensure that destinationFloor is different from currentFloor
+		differenciate(i, j, f); // ensure that destinationFloor is different from currentFloor
 		
 		this.destinationFloor = removeThirteen(j); // remove thirteen from possible random numbers
 	
@@ -66,7 +66,7 @@ public class Customer {
 	 * @param f represents numberOfFloors
 	 * @return destinationFloor
 	 */
-	public void diffderenciate(int i, int j, int f) {
+	public void differenciate(int i, int j, int f) {
 		if(i==j){
 			System.out.println(this.id + " current and destination were the same !!");
 			destinationFloor = (i+j+3)%f;
