@@ -1,6 +1,8 @@
-package classes;
+package backups;
 
 import java.util.ArrayList;
+
+import classes.Customer;
 
 public class Elevator {
 	
@@ -30,7 +32,6 @@ public class Elevator {
 	 * @param i represents the floors in the building
 	 */
 	public void move(){
-		//System.out.println("Currently on "+currentFloor+" floor ");
 		if(direction==1)
 		{ // if direction is set to 1 lift will move one floor up
 			if(currentFloor==numOfFloors)
@@ -89,7 +90,7 @@ public class Elevator {
 				continue;
 			}			 
 
-			this.move();
+				this.move();
 		}
 		System.out.println("---------------------------------------------");
 		direction = -1;
@@ -99,7 +100,7 @@ public class Elevator {
 			{
 				continue;
 			}
-			
+			 
 			this.move();	
 		}
 	}
@@ -109,10 +110,13 @@ public class Elevator {
 	 * @param c a Customer to be added to the registerList
 	 */
 	public void customerJoinsElevator(Customer c){
-		if(registerList.contains(c)){
+		if(registerList.contains(c))
+		{
 			System.out.println("Error. It apears that the customer already is in the Elevator...");
 			return;
-		}else{
+		}
+		else
+		{
 			registerList.add(c);
 		}
 	}
@@ -121,9 +125,11 @@ public class Elevator {
 	 * @param c a Customer to be removed from the registerList
 	 */
 	public void customerLeavesElevator(Customer c){
-		if(registerList.contains(c)) {
+		if(registerList.contains(c)) 
+		{
 			registerList.remove(c);
-		}else{
+		}else
+		{
 			System.out.println("Error. The customer is not anymore in the Elevator...");
 		}
 	}

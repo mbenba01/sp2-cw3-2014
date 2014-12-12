@@ -1,6 +1,9 @@
-package classes;
+package backups;
 
 import java.util.ArrayList;
+
+import classes.Customer;
+import classes.Elevator;
 
 /**
  * The Building class stores the number of floors and and the number of customers
@@ -19,7 +22,7 @@ public class Building {
 	private int numberOfCustomers; 
 	private Elevator elevator;
 	int o = 1; // to indicate number of operations for easy output reading
-	//int[][] table = {{15,5},{15,10},{14,4},{11,14},{4,0},{15,10},{5,0}};
+	int[][] table = {{15,5},{15,10},{14,4},{11,14},{4,0},{15,10},{5,0}};
 	
 	/**
 	 * Constructs instances of Building
@@ -33,16 +36,27 @@ public class Building {
 		
 		ArrayList<Customer> myList = new ArrayList<>(); // Create ArrayList of type Customer
 		
-		for(int j = 1; j <= c; j++) 
-		{
+		for(int j = 1; j <= c; j++) {
 			Customer d = new Customer(j, numberOfFloors);
-			myList.add(d);	
+			myList.add(d);
+			//myList.add(new Customer(j, numberOfFloors)); // Add instances of Customer to ArrayList
+			
 		}
 
 		this.customerList = myList; // Store instances of Customer in myList
 		
 		this.setElevator();
 	}
+	
+/*public static void main(String[] args) {
+		Building theHyde = new Building(15, 7);
+		System.out.println(theHyde.getCustomerList());
+		System.out.println("===============================================================");
+		System.out.println("Floors: " + theHyde.getNumberOfFloors());
+		System.out.println("Customers: " + theHyde.getNumberOfCustomers());
+		System.out.println("===============================================================");
+		theHyde.defautlStrategy();
+	}*/
 	
 	public int getNumberOfFloors() {
 		return numberOfFloors;
@@ -69,59 +83,69 @@ public class Building {
 	 * Checks (it will eventually) on each floor for customers willing to enter the lift and also checks if
 	 * any of the customers wants to leave the elevator
 	 */
-	public void defautlStrategy() 
-	{
+	public void defautlStrategy() {
 		int totalStops = 0;
 		elevator.setDirection(1);
-		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
-		{
-			if(i == 13) 
-			{
+		for(int i = 0; i <= elevator.getNumOfFloors(); i++) { // sign = causes the floor error
+			if(i == 13) {
 				continue;
 			}
 			this.checkFloor(i);
 			elevator.move();
 			totalStops++;
+			/*this.checkFloor(i);
+			if(i<elevator.getNumOfFloors())elevator.move();*/
 		}
 		System.out.println("---------------------------------------------");
 		elevator.setDirection(-1);
-		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
-		{
-			if(i == 13) 
-			{
+		for(int i = elevator.getNumOfFloors(); i >= 0; i--) {// sign = causes the floor error
+			if(i == 13) {
 				continue;
 			}
 			
 			this.checkFloor(i);
 			elevator.move();
 			totalStops++;
+			/*this.checkFloor(i);
+			if(i>0)elevator.move();	*/
 		}
+		// just some tests...
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
+		//System.out.println(elevator.registerList);
 		System.out.println("building customer list size: " + this.customerList.size());
 		System.out.println("Number of stops: " + (totalStops - 2));
+		//System.out.println(this.customerList);
 	}
-	public void checkFloor(int f)
-	{
-		for(int i = 0; i < this.customerList.size(); i++)
-		{
+	public void checkFloor(int f){
+		//int o,  to indicate number of operations for easier output reading
+		//System.out.println("this is \"f\" inside checkFloor: "+f);
+		for(int i = 0; i < this.customerList.size(); i++){
 			Customer c = this.customerList.get(i);
-			if(c.getCurrentFloor() == f)
-			{
+			if(c.getCurrentFloor() == f){
+				//System.out.println(i);
+				//System.out.print(o+". "); 
+				//o++;
 				System.out.println("customer " + c.getId() + " enters on floor: "+ f);
+				//if(this.customerList.remove(c)) System.out.println(c);
+				//elevator.registerList.add(c);
 				customerJoinsElevator(c);
 				this.customerList.remove(c);
+				//System.out.println("    b_list: "+this.customerList.size()+"  e_list: "+elevator.registerList.size());
 				i--;
 			}
 		}
-		for(int i = 0; i < elevator.registerList.size(); i++)
-		{
+		for(int i = 0; i < elevator.registerList.size(); i++){
 			Customer c = elevator.registerList.get(i);
-			if(c.getDestinationFloor() == f)
-			{
+			//elevator.registerList.
+			if(c.getDestinationFloor() == f){
+				//System.out.println(i);
+				//System.out.print(o+". "); 
+				//o++;
 				System.out.println("customer " + c.getId() + " exits on floor: " + f);
+				//if(elevator.registerList.remove(c)) System.out.println(c);
 				customerLeavesElevator(c);
-				i--;			
+				i--;
 			}
 		}
 	}
@@ -129,15 +153,11 @@ public class Building {
 	 * The method to add a Customer to the Elevator's registeList
 	 * @param c a Customer to be added to the registerList
 	 */
-	public void customerJoinsElevator(Customer c)
-	{
-		if(elevator.registerList.contains(c))
-		{
+	public void customerJoinsElevator(Customer c){
+		if(elevator.registerList.contains(c)){
 			System.out.println("Error. It apears that the customer already is in the Elevator...");
 			return;
-		}
-		else
-		{
+		}else{
 			elevator.registerList.add(c);
 		}
 	}
@@ -146,12 +166,9 @@ public class Building {
 	 * @param c a Customer to be removed from the registerList
 	 */
 	public void customerLeavesElevator(Customer c){
-		if(elevator.registerList.contains(c)) 
-		{
+		if(elevator.registerList.contains(c)) {
 			elevator.registerList.remove(c);
-		}
-		else
-		{
+		}else{
 			System.out.println("Error. The customer is not anymore in the Elevator...");
 		}
 	}	
