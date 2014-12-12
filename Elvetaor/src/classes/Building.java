@@ -47,7 +47,7 @@ public class Building {
 		this.setElevator();
 	}
 	
-public static void main(String[] args) {
+/*public static void main(String[] args) {
 		Building theHyde = new Building(15, 7);
 		System.out.println(theHyde.getCustomerList());
 		System.out.println("===============================================================");
@@ -55,7 +55,7 @@ public static void main(String[] args) {
 		System.out.println("Customers: " + theHyde.getNumberOfCustomers());
 		System.out.println("===============================================================");
 		theHyde.defautlStrategy();
-	}
+	}*/
 	
 	public int getNumberOfFloors() {
 		return numberOfFloors;
@@ -83,6 +83,7 @@ public static void main(String[] args) {
 	 * any of the customers wants to leave the elevator
 	 */
 	public void defautlStrategy() {
+		int totalStops = 0;
 		elevator.setDirection(1);
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) { // sign = causes the floor error
 			if(i == 13) {
@@ -90,7 +91,7 @@ public static void main(String[] args) {
 			}
 			this.checkFloor(i);
 			elevator.move();
-			
+			totalStops++;
 			/*this.checkFloor(i);
 			if(i<elevator.getNumOfFloors())elevator.move();*/
 		}
@@ -103,16 +104,17 @@ public static void main(String[] args) {
 			
 			this.checkFloor(i);
 			elevator.move();
-			
+			totalStops++;
 			/*this.checkFloor(i);
 			if(i>0)elevator.move();	*/
 		}
 		// just some tests...
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
-		System.out.println(elevator.registerList);
+		//System.out.println(elevator.registerList);
 		System.out.println("building customer list size: " + this.customerList.size());
-		System.out.println(this.customerList);
+		System.out.println("Number of stops: " + (totalStops - 2));
+		//System.out.println(this.customerList);
 	}
 	public void checkFloor(int f){
 		//int o,  to indicate number of operations for easier output reading
@@ -121,14 +123,14 @@ public static void main(String[] args) {
 			Customer c = this.customerList.get(i);
 			if(c.getCurrentFloor() == f){
 				//System.out.println(i);
-				System.out.print(o+". "); 
-				o++;
-				System.out.print("customer " + c.getId() + " enters on the floor nr: "+ f);
+				//System.out.print(o+". "); 
+				//o++;
+				System.out.println("customer " + c.getId() + " enters on floor: "+ f);
 				//if(this.customerList.remove(c)) System.out.println(c);
 				//elevator.registerList.add(c);
 				customerJoinsElevator(c);
 				this.customerList.remove(c);
-				System.out.println("    b_list: "+this.customerList.size()+"  e_list: "+elevator.registerList.size());
+				//System.out.println("    b_list: "+this.customerList.size()+"  e_list: "+elevator.registerList.size());
 				i--;
 			}
 		}
@@ -136,10 +138,10 @@ public static void main(String[] args) {
 			Customer c = elevator.registerList.get(i);
 			//elevator.registerList.
 			if(c.getDestinationFloor() == f){
-				System.out.println(i);
-				System.out.print(o+". "); 
-				o++;
-				System.out.println("customer " + c.getId() + " exits on floor nr: " + f);
+				//System.out.println(i);
+				//System.out.print(o+". "); 
+				//o++;
+				System.out.println("customer " + c.getId() + " exits on floor: " + f);
 				//if(elevator.registerList.remove(c)) System.out.println(c);
 				customerLeavesElevator(c);
 				//elevator.registerList.remove(i);

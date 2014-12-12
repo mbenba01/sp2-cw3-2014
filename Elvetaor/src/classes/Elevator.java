@@ -72,10 +72,10 @@ public class Elevator {
 				System.out.println("You have reached the last floor!");
 			}else {
 				if(currentFloor==12){
-					System.out.println("going to "+(currentFloor+2)+" floor. Going up!");
+					System.out.println("going up to floor: " + (currentFloor+2));
 					currentFloor+=2;
 				}else{
-					System.out.println("going to "+(currentFloor+1)+" floor. Going up!");
+					System.out.println("going up to floor: " + (currentFloor+1));
 					currentFloor +=1;
 				}
 			}
@@ -84,10 +84,10 @@ public class Elevator {
 				System.out.println("You have reached the ground floor!");
 			}else{
 				if(currentFloor==14){
-					System.out.println("going to "+(currentFloor-2)+" floor. Going down!");
+					System.out.println("going down to floor: " + (currentFloor-2));
 					currentFloor-=2;
 				}else{
-					System.out.println("going to "+(currentFloor-1)+" floor. Going down!");
+					System.out.println("going down to floor: " + (currentFloor-1));
 					currentFloor -=1;
 				}
 			}
