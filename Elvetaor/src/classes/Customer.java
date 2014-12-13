@@ -18,10 +18,8 @@ public class Customer {
 		int j = ran.nextInt(f+1);
 		
 		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
-		
-		differenciate(i, j, f); // ensure that destinationFloor is different from currentFloor
-		
 		this.destinationFloor = removeThirteen(j); // remove thirteen from possible random numbers
+		differenciate(i, j, f); // ensure that destinationFloor is different from currentFloor
 	
 	}
 	
