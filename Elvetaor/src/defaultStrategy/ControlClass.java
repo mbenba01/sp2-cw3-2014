@@ -1,6 +1,5 @@
 package defaultStrategy;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 

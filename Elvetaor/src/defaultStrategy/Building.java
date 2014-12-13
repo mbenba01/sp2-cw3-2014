@@ -77,46 +77,36 @@ public class Building {
 	 */
 	public void efficientStrategy(Customer e, int c) {
 		c = 0;
-		int numberOfStops = 0;
-		int[] destinationFloors = new int[this.numberOfCustomers];
-		
+		int numberOfStops = 0;	
 		while(c <= this.getNumberOfFloors()) {
-			for(Customer user: this.getCustomerList()) {
-				e = user;
+			for(int i = 0; i < this.getCustomerList().size(); i++) {
+				e = this.customerList.get(i);
 				if(c == e.getCurrentFloor()) {
-					//.callElevator(elevator.getCurrentFloor());
-					System.out.print("Customer " + e.getId() + " is on floor: " + e.getCurrentFloor());
+					System.out.print("Customer " + e.getId() + " comes in on floor: " + e.getCurrentFloor());
+					if(e.getCurrentFloor() < e.getDestinationFloor()) {
+						System.out.println(" and going up!");
+					} 
+					else if(e.getCurrentFloor() > e.getDestinationFloor()) 
+					{
+						System.out.println(" and going down!");
+					} 
+					else 
+					{
+						System.out.println(" and staying put!");
+					} 
 					elevator.customerJoins(e);
-					for(int i = 0; i <= elevator.getRegisterList().size(); i++) {
-						//System.out.print(" going to floor " + e.getDestinationFloor());
-						destinationFloors[i] = e.getDestinationFloor();
-						System.out.print(" going to floor " + destinationFloors[i]);
-						break;
-					}
-					
+					this.customerList.remove(e);
+					i--;
 					System.out.println("");
 					System.out.println("elevator register list size: " + elevator.getRegisterList().size());
 					numberOfStops++; // sums the number of stops the elevator makes 
 				}
+				
 			}
+			//for(int i = 0; i < )
 			c++;		
 		}
 		System.out.println("The elevator has made " + numberOfStops + " stops");
-		
-		for(int i = 0; i <this.customerList.size(); i++) {
-			e = this.getCustomerList().get(i);
-			if(e.getCurrentFloor() < e.getDestinationFloor()) {
-				System.out.println("Customer " + e.getId() + " is going up!");
-			} 
-			else if(e.getCurrentFloor() > e.getDestinationFloor()) 
-			{
-				System.out.println("Customer " + e.getId() + " is going down!");
-			} 
-			else 
-			{
-				System.out.println("Customer " + e.getId() + " is staying put!");
-			} 
-		}
 	}
 	
 }

@@ -91,7 +91,6 @@ public class Building {
 			{
 				continue;
 			}
-			
 			this.checkFloor(i);
 			elevator.move();
 			totalStops++;
@@ -101,11 +100,13 @@ public class Building {
 		System.out.println("building customer list size: " + this.customerList.size());
 		System.out.println("Number of stops: " + (totalStops - 2));
 	}
+	
 	public void checkFloor(int f)
 	{
 		for(int i = 0; i < this.customerList.size(); i++)
 		{
 			Customer c = this.customerList.get(i);
+			
 			if(c.getCurrentFloor() == f)
 			{
 				System.out.println("customer " + c.getId() + " enters on floor: "+ f);
@@ -114,9 +115,11 @@ public class Building {
 				i--;
 			}
 		}
+		
 		for(int i = 0; i < elevator.registerList.size(); i++)
 		{
 			Customer c = elevator.registerList.get(i);
+			
 			if(c.getDestinationFloor() == f)
 			{
 				System.out.println("customer " + c.getId() + " exits on floor: " + f);
@@ -125,6 +128,7 @@ public class Building {
 			}
 		}
 	}
+	
 	/**
 	 * The method to add a Customer to the Elevator's registeList
 	 * @param c a Customer to be added to the registerList
