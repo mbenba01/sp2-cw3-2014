@@ -123,7 +123,9 @@ public class Building {
 			{
 				continue;
 			}
-			System.out.println("floor: " + (elevator.getCurrentFloor()));
+			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0){
+			System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
+			}
 			this.checkFloor(i);
 			
 			elevator.move();
@@ -137,7 +139,9 @@ public class Building {
 			{
 				continue;
 			}
-			System.out.println("floor: " + (elevator.getCurrentFloor()));
+			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0) {
+			System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
+			}
 			this.checkFloor(i);
 			
 			elevator.move();
