@@ -15,6 +15,7 @@ public class Elevator {
 		registerList = new ArrayList<Customer>();
 		currentFloor = 0;
 		direction = 0;
+		
 	}
 	
 	public int getNumOfFloors() {
@@ -40,13 +41,11 @@ public class Elevator {
 			else 
 			{
 				if(currentFloor==12)
-				{
-					System.out.println("going up to floor: " + (currentFloor+2));
+				{	
 					currentFloor+=2;
 				}
 				else
-				{
-					System.out.println("going up to floor: " + (currentFloor+1));
+				{	
 					currentFloor +=1;
 				}
 			}
@@ -61,12 +60,10 @@ public class Elevator {
 			{
 				if(currentFloor==14)
 				{
-					System.out.println("going down to floor: " + (currentFloor-2));
 					currentFloor-=2;
 				}
 				else
 				{
-					System.out.println("going down to floor: " + (currentFloor-1));
 					currentFloor -=1;
 				}
 			}
@@ -74,33 +71,6 @@ public class Elevator {
 		else 
 		{ // if direction is set to 0 or anything else lift will not move
 			System.out.println("Error! I cannot move as lift has no direction set. \nPlease set direction first!");
-		}
-	}
-	
-	/**
-	 * moves the elevator to the top of the building
-	 */
-	public void defautlStrategy() {
-		this.direction = 1;
-		for(int i = 0; i < getNumOfFloors(); i++) 
-		{
-			if(i == 13) 
-			{
-				continue;
-			}			 
-
-			this.move();
-		}
-		System.out.println("---------------------------------------------");
-		direction = -1;
-		for(int i = getNumOfFloors(); i > 0; i--) 
-		{
-			if(i == 13) 
-			{
-				continue;
-			}
-			
-			this.move();	
 		}
 	}
 	
@@ -121,9 +91,12 @@ public class Elevator {
 	 * @param c a Customer to be removed from the registerList
 	 */
 	public void customerLeavesElevator(Customer c){
-		if(registerList.contains(c)) {
+		if(registerList.contains(c)) 
+		{
 			registerList.remove(c);
-		}else{
+		}
+		else
+		{
 			System.out.println("Error. The customer is not anymore in the Elevator...");
 		}
 	}

@@ -69,7 +69,7 @@ public class Building {
 	 * Checks (it will eventually) on each floor for customers willing to enter the lift and also checks if
 	 * any of the customers wants to leave the elevator
 	 */
-	public void defautlStrategy() 
+	public void defaultStrategy() 
 	{
 		int totalStops = 0;
 		elevator.setDirection(1);
@@ -81,6 +81,7 @@ public class Building {
 			}
 			this.checkFloor(i);
 			elevator.move();
+			System.out.println("Going up to floor: " + (elevator.getCurrentFloor()));
 			totalStops++;
 		}
 		System.out.println("---------------------------------------------");
@@ -93,12 +94,54 @@ public class Building {
 			}
 			this.checkFloor(i);
 			elevator.move();
+			System.out.println("Going down to floor: " + (elevator.getCurrentFloor()));
 			totalStops++;
 		}
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
 		System.out.println("Number of stops: " + (totalStops - 2));
+	}
+	public void efficientStrategy() 
+	{
+		int totalStops = 0;
+		Customer e = null;
+		for(Customer client : customerList) {
+			e = client;
+		}
+		elevator.setDirection(1);
+		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
+		{
+			
+			if(i == 13) 
+			{
+				continue;
+			}
+			this.checkFloor(i);
+			System.out.println("floor: " + (elevator.getCurrentFloor()));
+			elevator.move();
+			totalStops++;
+		}
+		System.out.println("---------------------------------------------");
+		elevator.setDirection(-1);
+		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
+		{
+			if(i == 13) 
+			{
+				continue;
+			}
+			System.out.println("floor: " + (elevator.getCurrentFloor()));
+			this.checkFloor(i);
+			
+			elevator.move();
+			if(e.getDestinationFloor() == elevator.getCurrentFloor())
+				totalStops++;
+		}
+		System.out.println("======================================================");
+		System.out.println("elevator register list size: " + elevator.registerList.size());
+		System.out.println("building customer list size: " + this.customerList.size());
+		System.out.println("Number of stops: " + (totalStops - 2));
+
 	}
 	
 	public void checkFloor(int f)
