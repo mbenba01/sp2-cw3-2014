@@ -36,7 +36,7 @@ public class Controller {
 		System.out.println("===============================================================");
 		//System.out.println("Customer list: " + theHyde.getCustomerList());
 		//lift.defautlStrategy();
-		theHyde.efficientStrategy();
+		theHyde.defaultStrategy();
 		
 
 	}

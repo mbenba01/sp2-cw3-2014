@@ -79,9 +79,12 @@ public class Building {
 			{
 				continue;
 			}
+			if(elevator.getCurrentFloor() != 0) {
+			System.out.println("Going up to floor: " + (elevator.getCurrentFloor()));
+			}
 			this.checkFloor(i);
 			elevator.move();
-			System.out.println("Going up to floor: " + (elevator.getCurrentFloor()));
+			
 			totalStops++;
 		}
 		System.out.println("---------------------------------------------");
@@ -92,9 +95,12 @@ public class Building {
 			{
 				continue;
 			}
+			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors()){
+			System.out.println("Going down to floor: " + (elevator.getCurrentFloor()));
+			}
 			this.checkFloor(i);
 			elevator.move();
-			System.out.println("Going down to floor: " + (elevator.getCurrentFloor()));
+			
 			totalStops++;
 		}
 		System.out.println("======================================================");
@@ -117,8 +123,9 @@ public class Building {
 			{
 				continue;
 			}
-			this.checkFloor(i);
 			System.out.println("floor: " + (elevator.getCurrentFloor()));
+			this.checkFloor(i);
+			
 			elevator.move();
 			totalStops++;
 		}
