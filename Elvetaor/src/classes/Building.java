@@ -18,8 +18,6 @@ public class Building {
 	private ArrayList<Customer> customerList; // list of customers in the Building 
 	private int numberOfCustomers; 
 	private Elevator elevator;
-	int o = 1; // to indicate number of operations for easy output reading
-	//int[][] table = {{15,5},{15,10},{14,4},{11,14},{4,0},{15,10},{5,0}};
 	
 	/**
 	 * Constructs instances of Building
@@ -106,7 +104,7 @@ public class Building {
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
-		System.out.println("Number of stops: " + (totalStops - 2));
+		System.out.println("Number of stops: " + (totalStops - 1));
 	}
 	public void efficientStrategy() 
 	{
@@ -124,8 +122,9 @@ public class Building {
 				continue;
 			}
 			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0){
-			System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
+				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
+			
 			this.checkFloor(i);
 			
 			elevator.move();
@@ -135,23 +134,30 @@ public class Building {
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
 		{
+			
 			if(i == 13) 
 			{
 				continue;
 			}
 			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0) {
-			System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
+				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
+			
+			if(e.getDestinationFloor() == elevator.getCurrentFloor()) {
+				totalStops++;
+			}
+			
 			this.checkFloor(i);
 			
 			elevator.move();
-			if(e.getDestinationFloor() == elevator.getCurrentFloor())
-				totalStops++;
+			
+			
+			
 		}
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
-		System.out.println("Number of stops: " + (totalStops - 2));
+		System.out.println("Number of stops: " + (totalStops));
 
 	}
 	
