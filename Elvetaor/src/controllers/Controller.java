@@ -27,7 +27,7 @@ public class Controller {
 		in.close();*/
 		
 		//Create new instance of Building
-		Building theHyde = new Building(15, 7);
+		Building theHyde = new Building(15, 10);
 		//Elevator lift = new Elevator(15);
 		System.out.println(theHyde.getCustomerList());
 		System.out.println("===============================================================");

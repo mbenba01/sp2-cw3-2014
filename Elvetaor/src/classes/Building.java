@@ -126,7 +126,6 @@ public class Building {
 			}
 			
 			this.checkFloor(i);
-			
 			elevator.move();
 			totalStops++;
 		}
@@ -143,13 +142,11 @@ public class Building {
 				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
 			
-			if(e.getDestinationFloor() == elevator.getCurrentFloor()) {
+			this.checkFloor(i);
+			elevator.move();
+			if(e.getCurrentFloor() == elevator.getCurrentFloor() || e.getDestinationFloor() == elevator.getCurrentFloor()) {
 				totalStops++;
 			}
-			
-			this.checkFloor(i);
-			
-			elevator.move();
 			
 			
 			
@@ -205,6 +202,7 @@ public class Building {
 			elevator.registerList.add(c);
 		}
 	}
+	
 	/**
 	 * The method to remove a Customer from the Elevator's registerList
 	 * @param c a Customer to be removed from the registerList
