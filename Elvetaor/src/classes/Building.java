@@ -104,7 +104,7 @@ public class Building {
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
-		System.out.println("Number of stops: " + (totalStops - 1));
+		System.out.println("Number of stops: " + (totalStops));
 	}
 	public void efficientStrategy() 
 	{
@@ -129,6 +129,7 @@ public class Building {
 			elevator.move();
 			totalStops++;
 		}
+		System.out.println("Number of stops: " + (totalStops));
 		System.out.println("---------------------------------------------");
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
@@ -144,13 +145,10 @@ public class Building {
 			
 			this.checkFloor(i);
 			elevator.move();
-			if(e.getCurrentFloor() == elevator.getCurrentFloor() || e.getDestinationFloor() == elevator.getCurrentFloor()) {
-				totalStops++;
-			}
-			
 			
 			
 		}
+		System.out.println("Number of stops: " + (totalStops));
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
