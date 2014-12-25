@@ -109,25 +109,27 @@ public class Building {
 	public void efficientStrategy() 
 	{
 		int totalStops = 0;
-		Customer e = null;
-		for(Customer client : customerList) {
-			e = client;
-		}
 		elevator.setDirection(1);
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
 			
-			if(i == 13) 
-			{
-				continue;
-			}
-			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0){
+			if(i !=  elevator.getNumOfFloors() && i != 0){
 				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
 			
 			this.checkFloor(i);
+			Customer e = null;
+			for(Customer client : customerList) {
+				e = client;
+				for(int j = 0; j <= elevator.getNumOfFloors(); j++) {
+				if(e.getDestinationFloor() == j || e.getCurrentFloor() == j) {
+					System.out.println("- x -");
+					break;
+				}
+				}
+			}
 			elevator.move();
-			totalStops++;
+			
 		}
 		System.out.println("Number of stops: " + (totalStops));
 		System.out.println("---------------------------------------------");
@@ -135,20 +137,16 @@ public class Building {
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
 		{
 			
-			if(i == 13) 
-			{
-				continue;
-			}
 			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0) {
 				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
 			
 			this.checkFloor(i);
+			
 			elevator.move();
 			
-			
 		}
-		System.out.println("Number of stops: " + (totalStops));
+		//System.out.println("Number of stops: " + (totalStops));
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
