@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * The Building class stores the number of floors and and the number of customers
@@ -109,25 +110,25 @@ public class Building {
 	public void efficientStrategy() 
 	{
 		int totalStops = 0;
+		LinkedList<Customer> e = new LinkedList<Customer>();
+		for(Customer client : elevator.registerList) {
+			e.add(client);
+		}
 		elevator.setDirection(1);
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
-			
+			if(i <= e.size()) {
+				Customer c = e.get(i);
+				if(c.getCurrentFloor() == i || c.getDestinationFloor() == i) {
+					System.out.println(c.getId());
+				}
+			}
 			if(i !=  elevator.getNumOfFloors() && i != 0){
 				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
 			
 			this.checkFloor(i);
-			Customer e = null;
-			for(Customer client : customerList) {
-				e = client;
-				for(int j = 0; j <= elevator.getNumOfFloors(); j++) {
-				if(e.getDestinationFloor() == j || e.getCurrentFloor() == j) {
-					System.out.println("- x -");
-					break;
-				}
-				}
-			}
+			
 			elevator.move();
 			
 		}
