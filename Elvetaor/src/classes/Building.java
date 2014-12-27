@@ -1,6 +1,7 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The Building class stores the number of floors and and the number of customers
@@ -108,31 +109,39 @@ public class Building {
 	}
 	public void efficientStrategy() 
 	{
+		boolean stop = false;
 		int totalStops = 0;
 		Customer e = null;
-		for(Customer client : customerList) {
-			e = client;
-		}
+		int[] temp_array = new int[customerList.size()];
+		int numOfCustomers = 0;
+		
 		elevator.setDirection(1);
-		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
+		for(int i = 0; i < elevator.getNumOfFloors(); i++) 
 		{
-			
-/*			if(i == 13) 
-			{
-				continue;
-			}*/
-			
+
 			if(i !=  elevator.getNumOfFloors() && i != 0){
 				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
-			
-			this.checkFloor(e.getCurrentFloor());
-			
 			elevator.move();
+			this.checkFloor(i);
+			int j = 0;
+			while(j < customerList.size()) {
+				e = customerList.get(j);
+				if(e.getCurrentFloor() == elevator.getCurrentFloor() || e.getDestinationFloor() == elevator.getCurrentFloor()) {
+					stop = true;
+					//System.out.println("Customer: " + e.getId() + " expected on floor " + e.getCurrentFloor());
+					temp_array[i] = 1;
+					System.out.println("Number of customers on floor " + elevator.getCurrentFloor() + ": " + temp_array.length);
+					break;
+				}
+				j++;
+			}
+			if(stop) {
+				totalStops++;
+			}
 			
-			
-			
-			
+			System.out.println();
+			//break;
 		}
 		System.out.println("Number of stops: " + (totalStops));
 		System.out.println("---------------------------------------------");
@@ -170,7 +179,7 @@ public class Building {
 			
 			if(c.getCurrentFloor() == f)
 			{
-				System.out.println("customer " + c.getId() + " enters on floor: "+ f);
+				System.out.println("Customer " + c.getId() + " enters on floor: "+ f);
 				customerJoinsElevator(c);
 				this.customerList.remove(c);
 				i--;
@@ -183,7 +192,7 @@ public class Building {
 			
 			if(c.getDestinationFloor() == f)
 			{
-				System.out.println("customer " + c.getId() + " exits on floor: " + f);
+				System.out.println("Customer " + c.getId() + " exits on floor: " + f);
 				customerLeavesElevator(c);
 				i--;			
 			}
