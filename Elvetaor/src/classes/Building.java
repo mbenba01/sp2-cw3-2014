@@ -1,7 +1,6 @@
 package classes;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  * The Building class stores the number of floors and and the number of customers
@@ -110,26 +109,29 @@ public class Building {
 	public void efficientStrategy() 
 	{
 		int totalStops = 0;
-		LinkedList<Customer> e = new LinkedList<Customer>();
-		for(Customer client : elevator.registerList) {
-			e.add(client);
+		Customer e = null;
+		for(Customer client : customerList) {
+			e = client;
 		}
 		elevator.setDirection(1);
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
-			if(i <= e.size()) {
-				Customer c = e.get(i);
-				if(c.getCurrentFloor() == i || c.getDestinationFloor() == i) {
-					System.out.println(c.getId());
-				}
-			}
+			
+/*			if(i == 13) 
+			{
+				continue;
+			}*/
+			
 			if(i !=  elevator.getNumOfFloors() && i != 0){
 				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
 			
-			this.checkFloor(i);
+			this.checkFloor(e.getCurrentFloor());
 			
 			elevator.move();
+			
+			
+			
 			
 		}
 		System.out.println("Number of stops: " + (totalStops));
@@ -138,6 +140,10 @@ public class Building {
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
 		{
 			
+/*			if(i == 13) 
+			{
+				continue;
+			}*/
 			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0) {
 				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
 			}
@@ -145,6 +151,7 @@ public class Building {
 			this.checkFloor(i);
 			
 			elevator.move();
+			
 			
 		}
 		//System.out.println("Number of stops: " + (totalStops));
