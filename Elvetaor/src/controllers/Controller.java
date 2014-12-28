@@ -26,11 +26,14 @@ public class Controller {
 				in = new Scanner(System.in);
 				//prompt user for a number of floors to use as a parameter for the Building object
 				System.out.print("Please enter the number of floors: ");
-				numberOfFloors = in.nextInt();
-				//if(number)
+				int floors = in.nextInt();
+					if(floors < 1) throw new InputMismatchException("must be bigger than 1");
+					else numberOfFloors = floors;
 				//prompt user for and store number of customers to use as a parameter for the Building object
 				System.out.print("Please enter the number of customers: ");
-				numberOfCustomers = in.nextInt();
+				int customers = in.nextInt();
+					if(customers < 1) throw new InputMismatchException("must be bigger than 1");
+					else numberOfCustomers = customers;
 				userInput = false;
 			}catch (InputMismatchException e){
 				System.out.println("wrong input, please try again!!!");
