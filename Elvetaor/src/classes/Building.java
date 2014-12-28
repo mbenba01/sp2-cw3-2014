@@ -72,7 +72,9 @@ public class Building {
 	public void defaultStrategy() 
 	{
 		int totalStops = 0;
+		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods	
 		elevator.setDirection(1);
+		
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
 			if(i == 13) 
@@ -115,7 +117,9 @@ public class Building {
 	public void efficientStrategy() 
 	{
 		int totalStops = 0;
-		elevator.setDirection(1);
+		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
+		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods
+		
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
 
@@ -170,7 +174,7 @@ public class Building {
 			if(c.getCurrentFloor() == f)
 			{
 				System.out.println("Customer " + c.getId() + " enters on floor: "+ f);
-				customerJoinsElevator(c);
+				this.customerJoinsElevator(c);
 				this.customerList.remove(c);
 				i--;
 			}

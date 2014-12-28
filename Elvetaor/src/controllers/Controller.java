@@ -35,6 +35,8 @@ public class Controller {
 		System.out.println("Customers: " + theHyde.getNumberOfCustomers());
 		System.out.println("===============================================================");
 		
+		theHyde.defaultStrategy();
+		System.out.println("=========================================efficient Strategy=========================================================");
 		theHyde.efficientStrategy();
 		
 

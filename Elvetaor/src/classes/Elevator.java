@@ -22,10 +22,6 @@ public class Elevator {
 		return numOfFloors;
 	}
 	
-	public int getCurrentFloor() {
-		return currentFloor;
-	}
-	
 	/**
 	 * The method to move the elevator by 1 floor
 	 * @param i represents the floors in the building
@@ -105,5 +101,11 @@ public class Elevator {
 	}
 	public void setDirection(int i){
 		direction = i;
+	}
+	public int getCurrentFloor(){
+		return this.currentFloor;
+	}
+	public void setCurrentFloor(int f){
+		this.currentFloor = f;
 	}
 }
