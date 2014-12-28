@@ -1,8 +1,10 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import classes.Building;
+import classes.Customer;
 import classes.Elevator;
 
 public class Controller {
@@ -29,15 +31,21 @@ public class Controller {
 		//Create new instance of Building
 		Building theHyde = new Building(15, 10);
 		//Elevator lift = new Elevator(15);
-		System.out.println(theHyde.getCustomerList());
+		ArrayList customersInBuilding = theHyde.getCustomerList();
+		ArrayList<Customer> customersInBuilding2 = new ArrayList<Customer>(customersInBuilding);
+		System.out.println(customersInBuilding.size()+" size!");
+		System.out.println(customersInBuilding);
 		System.out.println("===============================================================");
 		System.out.println("Floors: " + theHyde.getNumberOfFloors());
 		System.out.println("Customers: " + theHyde.getNumberOfCustomers());
 		System.out.println("===============================================================");
 		
 		theHyde.defaultStrategy();
-		System.out.println("=========================================efficient Strategy=========================================================");
-		theHyde.efficientStrategy();
+		
+		Building theHyde2 = new Building(15, 10);
+		System.out.println(customersInBuilding2.size()+" size!");
+		theHyde2.setCustomerList(customersInBuilding2);
+		theHyde2.efficientStrategy();
 		
 
 	}

@@ -63,6 +63,9 @@ public class Building {
 	public ArrayList<Customer> getCustomerList() {
 		return customerList;
 	}
+	public void setCustomerList(ArrayList<Customer> al){
+		this.customerList = al;
+	}
 	
 	/**
 	 * moves the elevator from the bottom to the top of the building.
@@ -71,6 +74,7 @@ public class Building {
 	 */
 	public void defaultStrategy() 
 	{
+		System.out.println("defaultStrategy: =========================================================");
 		int totalStops = 0;
 		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods	
 		elevator.setDirection(1);
@@ -116,6 +120,7 @@ public class Building {
 	 */
 	public void efficientStrategy() 
 	{
+		System.out.println("efficientStrategy: =========================================================");
 		int totalStops = 0;
 		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
 		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods
