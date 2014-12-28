@@ -20,6 +20,7 @@ public class Building {
 	private ArrayList<Customer> customerList; // list of customers in the Building 
 	private int numberOfCustomers; 
 	private Elevator elevator;
+	private String output;
 	
 	/**
 	 * Constructs instances of Building
@@ -42,6 +43,7 @@ public class Building {
 		this.customerList = myList; // Store instances of Customer in myList
 		
 		this.setElevator();
+		this.output = "";
 	}
 	
 	public int getNumberOfFloors() {
@@ -65,6 +67,12 @@ public class Building {
 	}
 	public void setCustomerList(ArrayList<Customer> al){
 		this.customerList = al;
+	}
+	public void setOutput(String s){
+		this.output+=s;
+	}
+	public String getOutput(){
+		return this.output;
 	}
 	
 	/**
@@ -112,7 +120,7 @@ public class Building {
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
-		System.out.println("Number of stops: " + (totalStops));
+		this.output += "defaultStrategy(): Number of stops: " + totalStops + '\n';
 	}
 	/*
 	 * moves through the floors of the building but only stops where customers are present.
@@ -167,7 +175,7 @@ public class Building {
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
-		System.out.println("Number of stops: " + (totalStops));
+		this.output += "efficientStrategy(): Number of stops: " + totalStops + '\n';
 	}
 	
 	public void checkFloor(int f)
