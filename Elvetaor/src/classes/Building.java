@@ -2,6 +2,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 /**
  * The Building class stores the number of floors and and the number of customers
@@ -65,7 +66,7 @@ public class Building {
 	
 	/**
 	 * moves the elevator from the bottom to the top of the building.
-	 * Checks (it will eventually) on each floor for customers willing to enter the lift and also checks if
+	 * Stops at each floor and checks for customers willing to enter the lift and also checks if
 	 * any of the customers wants to leave the elevator
 	 */
 	public void defaultStrategy() 
@@ -107,68 +108,57 @@ public class Building {
 		System.out.println("building customer list size: " + this.customerList.size());
 		System.out.println("Number of stops: " + (totalStops));
 	}
+	/*
+	 * moves through the floors of the building but only stops where customers are present.
+	 * This ensures the elevator only stops when there are customers present on floors.
+	 */
 	public void efficientStrategy() 
 	{
-		boolean stop = false;
 		int totalStops = 0;
-		Customer e = null;
-		int[] temp_array = new int[customerList.size()];
-		int numOfCustomers = 0;
-		
 		elevator.setDirection(1);
-		for(int i = 0; i < elevator.getNumOfFloors(); i++) 
+		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
 
-			if(i !=  elevator.getNumOfFloors() && i != 0){
-				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
-			}
-			elevator.move();
 			this.checkFloor(i);
-			int j = 0;
-			while(j < customerList.size()) {
-				e = customerList.get(j);
-				if(e.getCurrentFloor() == elevator.getCurrentFloor() || e.getDestinationFloor() == elevator.getCurrentFloor()) {
-					stop = true;
-					//System.out.println("Customer: " + e.getId() + " expected on floor " + e.getCurrentFloor());
-					temp_array[i] = 1;
-					System.out.println("Number of customers on floor " + elevator.getCurrentFloor() + ": " + temp_array.length);
-					break;
-				}
-				j++;
-			}
-			if(stop) {
-				totalStops++;
-			}
+			elevator.move();
 			
-			System.out.println();
+			if(elevator.getCurrentFloor() != 0) {
+				//System.out.println("Going up to floor: " + (elevator.getCurrentFloor()));
+			}
+			for(int j = 0; j < customerList.size(); j++) {
+				Customer e = customerList.get(j);
+				//System.out.print(e);
+				if(e.getCurrentFloor() == elevator.getCurrentFloor() || e.getDestinationFloor() == elevator.getCurrentFloor()) {
+					totalStops++;
+				}
+				
+			}
 			//break;
 		}
-		System.out.println("Number of stops: " + (totalStops));
 		System.out.println("---------------------------------------------");
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
 		{
-			
-/*			if(i == 13) 
-			{
-				continue;
-			}*/
-			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors() && elevator.getCurrentFloor() != 0) {
-				System.out.println("Passes floor: " + (elevator.getCurrentFloor()));
-			}
+
 			
 			this.checkFloor(i);
-			
 			elevator.move();
-			
-			
+			for(int j = 0; j < customerList.size(); j++) {
+				Customer e = customerList.get(j);
+				//System.out.print(e);
+				if(e.getDestinationFloor() == elevator.getCurrentFloor()) {
+					totalStops++;
+				}
+				
+			}
+			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors()){
+				//System.out.println("Going down to floor: " + (elevator.getCurrentFloor()));
+				}
 		}
-		//System.out.println("Number of stops: " + (totalStops));
 		System.out.println("======================================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
 		System.out.println("Number of stops: " + (totalStops));
-
 	}
 	
 	public void checkFloor(int f)
