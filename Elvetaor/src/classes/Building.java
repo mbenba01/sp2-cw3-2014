@@ -21,6 +21,7 @@ public class Building {
 	private int numberOfCustomers; 
 	private Elevator elevator;
 	private String output;
+	private String log;
 	
 	/**
 	 * Constructs instances of Building
@@ -76,7 +77,12 @@ public class Building {
 	public String getOutput(){
 		return this.output;
 	}
-	
+	public void log(String s){
+		this.log+=s+'\n';
+	}
+	public String getLog(){
+		return this.log;
+	}
 	/**
 	 * moves the elevator from the bottom to the top of the building.
 	 * Stops at each floor and checks for customers willing to enter the lift and also checks if
@@ -84,7 +90,7 @@ public class Building {
 	 */
 	public void defaultStrategy() 
 	{
-		System.out.println("defaultStrategy: =========================================================");
+		log("defaultStrategy: =========================================================");
 		int totalStops = 0;
 		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods	
 		elevator.setDirection(1);
@@ -96,14 +102,14 @@ public class Building {
 				continue;
 			}
 			if(elevator.getCurrentFloor() != 0) {
-			System.out.println("Going up to floor: " + (elevator.getCurrentFloor()));
+				log("Going up to floor: " + (elevator.getCurrentFloor()));
 			}
 			this.checkFloor(i);
 			elevator.move();
 			
 			totalStops++;
 		}
-		System.out.println("---------------------------------------------");
+		log("---------------------------------------------");
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
 		{
@@ -112,16 +118,16 @@ public class Building {
 				continue;
 			}
 			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors()){
-			System.out.println("Going down to floor: " + (elevator.getCurrentFloor()));
+			log("Going down to floor: " + (elevator.getCurrentFloor()));
 			}
 			this.checkFloor(i);
 			elevator.move();
 			
 			totalStops++;
 		}
-		System.out.println("======================================================");
-		System.out.println("elevator register list size: " + elevator.registerList.size());
-		System.out.println("building customer list size: " + this.customerList.size());
+		log("======================================================");
+		log("elevator register list size: " + elevator.registerList.size());
+		log("building customer list size: " + this.customerList.size()+'\n');
 		this.output += "defaultStrategy(): Number of stops: " + totalStops + '\n';
 	}
 	/**
@@ -130,53 +136,40 @@ public class Building {
 	 */
 	public void efficientStrategy() 
 	{
-		System.out.println("efficientStrategy: =========================================================");
+		log("efficientStrategy: =========================================================");
 		int totalStops = 0;
 		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
 		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods
 		
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
-
 			this.checkFloor(i);
 			elevator.move();
 			
-			if(elevator.getCurrentFloor() != 0) {
-				//System.out.println("Going up to floor: " + (elevator.getCurrentFloor()));
-			}
 			for(int j = 0; j < customerList.size(); j++) {
 				Customer e = customerList.get(j);
-				//System.out.print(e);
 				if(e.getCurrentFloor() == elevator.getCurrentFloor() || e.getDestinationFloor() == elevator.getCurrentFloor()) {
 					totalStops++;
 				}
 				
 			}
-			//break;
 		}
-		System.out.println("---------------------------------------------");
+		log("---------------------------------------------");
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
 		{
-
-			
 			this.checkFloor(i);
 			elevator.move();
 			for(int j = 0; j < customerList.size(); j++) {
 				Customer e = customerList.get(j);
-				//System.out.print(e);
 				if(e.getDestinationFloor() == elevator.getCurrentFloor()) {
 					totalStops++;
 				}
-				
 			}
-			if(elevator.getCurrentFloor() !=  elevator.getNumOfFloors()){
-				//System.out.println("Going down to floor: " + (elevator.getCurrentFloor()));
-				}
 		}
-		System.out.println("======================================================");
-		System.out.println("elevator register list size: " + elevator.registerList.size());
-		System.out.println("building customer list size: " + this.customerList.size());
+		log("======================================================");
+		log("elevator register list size: " + elevator.registerList.size());
+		log("building customer list size: " + this.customerList.size());
 		this.output += "efficientStrategy(): Number of stops: " + totalStops + '\n';
 	}
 	/**
@@ -192,7 +185,7 @@ public class Building {
 			
 			if(c.getCurrentFloor() == f)
 			{
-				System.out.println("Customer " + c.getId() + " enters on floor: "+ f);
+				log("Customer " + c.getId() + " enters on floor: "+ f);
 				this.customerJoinsElevator(c);
 				this.customerList.remove(c);
 				i--;
@@ -205,7 +198,7 @@ public class Building {
 			
 			if(c.getDestinationFloor() == f)
 			{
-				System.out.println("Customer " + c.getId() + " exits on floor: " + f);
+				log("Customer " + c.getId() + " exits on floor: " + f);
 				customerLeavesElevator(c);
 				i--;			
 			}
