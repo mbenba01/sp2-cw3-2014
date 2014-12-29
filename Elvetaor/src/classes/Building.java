@@ -27,7 +27,8 @@ public class Building {
 	 */
 	public Building(int f, int c) {
 		
-		this.numberOfFloors = f-1; // Number of floors in the building
+		if(f>12)f++;
+		this.numberOfFloors = f; // Number of floors in the building
 		numberOfCustomers = c;   // Number of customers in the building
 		
 		ArrayList<Customer> myList = new ArrayList<>(); // Create ArrayList of type Customer
@@ -102,37 +103,40 @@ public class Building {
 		int totalStops = 0;	
 		elevator.setDirection(1);
 		
-		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
+		for(int i = 0; i < elevator.getNumOfFloors(); i++) 
 		{
 			if(i == 13) 
 			{
 				continue;
 			}
-			displayMove("up");
 			this.checkFloor(i,false);
 			totalStops++;
 			elevator.move();
+			displayMove("up");
 		}
 		System.out.println("-------------------------------------------");
 		elevator.setDirection(-1);
-		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
+		for(int i = elevator.getNumOfFloors(); i > 0; i--) 
 		{
 			if(i == 13) 
 			{
 				continue;
 			}
-			
+			elevator.move();
 			displayMove("down");
 			this.checkFloor(i,false);
 			totalStops++;
-			elevator.move();
 		}
 		System.out.println("===========================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size()+'\n');
 		System.out.println("Total stops using default strategy: " + totalStops + "\n===========================================");
 	}
-	public void testStrategy(){
+	/**
+	 * moves through the floors of the building but only stops where customers are present.
+	 * This ensures the elevator only stops when there are customers present on floors.
+	 */
+	public void efficientStrategy(){
 		System.out.println("testStrategy" + "\n===========================================");
 		int totalStops = 0;	
 		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
@@ -173,7 +177,7 @@ public class Building {
 	 * moves through the floors of the building but only stops where customers are present.
 	 * This ensures the elevator only stops when there are customers present on floors.
 	 */
-	public void efficientStrategy() 
+	public void oldEfficientStrategy() 
 	{
 		
 		System.out.println("efficient Strategy" + "\n===========================================");

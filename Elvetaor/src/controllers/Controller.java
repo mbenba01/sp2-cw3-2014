@@ -60,7 +60,7 @@ public class Controller {
 		
 		theHyde.setCustomerList(customersInBuilding2);
 		
-		theHyde.testStrategy(); // <------- test strategy. change to efficientStrategy() !!!!!!!    <---------------
+		theHyde.efficientStrategy(); // <------- test strategy. change to efficientStrategy() !!!!!!!    <---------------
 		
 		// comment or uncomment in order to switch off/on output from class Building
 		//System.out.println(theHyde.getLog());
