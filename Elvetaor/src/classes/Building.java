@@ -173,62 +173,6 @@ public class Building {
 		System.out.println("building customer list size: " + this.customerList.size());
 		System.out.println("Total stops using test strategy: " + totalStops + "\n===========================================");
 	}
-	/**
-	 * moves through the floors of the building but only stops where customers are present.
-	 * This ensures the elevator only stops when there are customers present on floors.
-	 */
-	public void oldEfficientStrategy() 
-	{
-		
-		System.out.println("efficient Strategy" + "\n===========================================");
-		int totalStops = 0;
-		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
-		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods
-
-		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
-		{
-			
-			displayMove("up");
-			boolean stop = false;
-			for(int j = 0; j < customerList.size(); j++) {
-				Customer e = customerList.get(j);
-				if(e.getCurrentFloor() == i) {
-					if(e.getCurrentFloor() != 0 && elevator.getCurrentFloor() != 0) {
-						stop = true;
-					}
-					System.out.println("Number of customers on floor " + 
-										elevator.getCurrentFloor() + ": " + 
-										customerList.size());
-				}
-				if(stop)totalStops++;
-				stop = false;
-			}
-			elevator.move();
-			this.checkFloor(i,false);
-		}
-		System.out.println("-------------------------------------------");
-		elevator.setDirection(-1);
-		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
-		{
-			displayMove("down");
-			boolean stop = false;
-			for(int j = 0; j < customerList.size(); j++) {
-				Customer e = customerList.get(j);
-				if(e.getDestinationFloor() == elevator.getCurrentFloor()) {
-					System.out.println("Customer " + e.getId() + " exits on floor: " + i);
-					stop = true;
-				}
-				if(stop)totalStops++;
-				stop = false;
-			}
-			elevator.move();
-			this.checkFloor(i, false);
-		}
-		System.out.println("===========================================");
-		System.out.println("elevator register list size: " + elevator.registerList.size());
-		System.out.println("building customer list size: " + this.customerList.size());
-		System.out.println("Total stops using efficient strategy: " + totalStops + "\n===========================================");
-	}
 	
 	/**
 	 * checks if there is someone waiting for the elevator on the floor "f".
@@ -248,7 +192,7 @@ public class Building {
 			{
 				anyone=true;
 				if(test){
-					continue;
+					return true;
 				}
 				System.out.println("Customer " + c.getId() + " enters on floor: " + f);
 				elevator.customerJoinsElevator(c);
@@ -266,7 +210,7 @@ public class Building {
 			{
 				anyone=true;
 				if(test){
-					continue;
+					return true;
 				}
 				System.out.println("Customer " + c.getId() + " exits on floor: " + f);
 				elevator.customerLeavesElevator(c);
