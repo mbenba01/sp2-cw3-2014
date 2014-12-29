@@ -60,9 +60,8 @@ public class Controller {
 		theHyde.setCustomerList(customersInBuilding2);
 		theHyde.efficientStrategy();
 		
+		//System.out.println(theHyde.getLog());
 		System.out.println(theHyde.getOutput());
-		
-
 	}
 
 }
