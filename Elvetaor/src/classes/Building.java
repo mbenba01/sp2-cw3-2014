@@ -30,7 +30,7 @@ public class Building {
 	 */
 	public Building(int f, int c) {
 		
-		this.numberOfFloors = f; // Number of floors in the building
+		this.numberOfFloors = f-1; // Number of floors in the building
 		numberOfCustomers = c;   // Number of customers in the building
 		
 		ArrayList<Customer> myList = new ArrayList<>(); // Create ArrayList of type Customer
