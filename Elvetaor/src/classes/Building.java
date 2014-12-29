@@ -78,7 +78,6 @@ public class Building {
 	}
 	
 	/**
-	 * just test
 	 * moves the elevator from the bottom to the top of the building.
 	 * Stops at each floor and checks for customers willing to enter the lift and also checks if
 	 * any of the customers wants to leave the elevator
