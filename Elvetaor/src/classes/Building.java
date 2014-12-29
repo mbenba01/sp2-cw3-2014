@@ -85,11 +85,11 @@ public class Building {
 	public ArrayList<Customer> getCustomerList() {
 		return customerList;
 	}
-	
-	
-	public void setCustomerList(ArrayList<Customer> al){
-		this.customerList = al;
-	}
+//	
+//	
+//	public void setCustomerList(ArrayList<Customer> al){
+//		this.customerList = al;
+//	}
 	
 	public void setOutput(String s){
 		this.output+=s;

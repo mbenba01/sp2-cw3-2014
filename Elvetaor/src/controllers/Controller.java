@@ -49,16 +49,16 @@ public class Controller {
 		//Create new instance of Building
 		Building theHyde = new Building(numberOfFloors, numberOfCustomers);
 		
-		ArrayList<Customer> customersInBuilding = theHyde.getCustomerList();
+		//ArrayList<Customer> customersInBuilding = theHyde.getCustomerList();
 		
 		// copying the list in order to compare strategies on the same input for better readability
-		ArrayList<Customer> customersInBuilding2 = new ArrayList<Customer>(customersInBuilding);
+		//ArrayList<Customer> customersInBuilding2 = new ArrayList<Customer>(customersInBuilding);
 		
-		System.out.println(customersInBuilding); // printing content of the buildings Customers list
-		
+		//System.out.println(customersInBuilding); // printing content of the buildings Customers list
+		System.out.println(theHyde.getCustomerList());
 		theHyde.defaultStrategy();
 		
-		theHyde.setCustomerList(customersInBuilding2);
+		//theHyde.setCustomerList(customersInBuilding2);
 		
 		theHyde.efficientStrategy();
 		

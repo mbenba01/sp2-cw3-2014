@@ -9,13 +9,19 @@ public class Customer {
 	private int destinationFloor;
 	private boolean inElevator;
 	
+	/**
+	 * Constructs instances of Customer
+	 * @param id of type int. Represents the unique identifier for each customer
+	 * @param f of type int. Represents the number of floors in the building. Used to ensure the random number is not bigger
+	 * than the number of floors
+	 */
 	public Customer(int id, int f) {
 
 		this.id = id;
 		Random ran = new Random();
 		
-		int i = ran.nextInt(f+1);
-		int j = ran.nextInt(f+1);
+		int i = ran.nextInt(f+1); // Set the range for the random number between 0 and number of floors + 1 (used to replace 13). 
+		int j = ran.nextInt(f+1); // Set the range for the random number between 0 and number of floors + 1 (used to replace 13).
 		
 		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
 		this.destinationFloor = removeThirteen(j); // remove thirteen from possible random numbers
@@ -23,27 +29,48 @@ public class Customer {
 	
 	}
 	
+	/**
+	 * Allows access to the id field outside the scope of class Customer
+	 * @return id of type int
+	 */
 	public int getId() {
 		return id;
 	}
 	
+	/**
+	 * Allows access to the currenFloor field outside the scope of class Customer
+	 * @return currentFloor of type int
+	 */
 	public int getCurrentFloor() {
 		return currentFloor;
 	}
+	
+	/**
+	 * sets value to currentFloor
+	 * @param i used to store the current floor of the customer.
+	 */
 	public void setCurrentFloor(int i){
 		this.currentFloor = i;
 	}
 	
+	/**
+	 * Allows access to destinationFloor field outside the scope of class Customer
+	 * @return destinationFloor of type int
+	 */
 	public int getDestinationFloor() {
 		return destinationFloor;
 	}
 	
+	/**
+	 * sets value to DestinationFloor
+	 * @param i used to store the current floor of the customer.
+	 */
 	public void setDestinationFloor(int i){
 		this.destinationFloor = i;
 	}
 	
-	/** ensures the elevator does not stop on thirteenth floor
-	 * 
+	/** 
+	 * ensures the elevator does not stop on thirteenth floor
 	 * @param i represents the current floor of customer
 	 * @return the current floor of the customer
 	 */
