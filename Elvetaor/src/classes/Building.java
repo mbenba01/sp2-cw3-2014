@@ -19,8 +19,6 @@ public class Building {
 	private ArrayList<Customer> customerList; // list of customers in the Building 
 	private int numberOfCustomers; 
 	private Elevator elevator;
-	//private String output; NOT NEEDED
-	//private String log; NOT NEEDED
 	
 	/**
 	 * Constructs instances of Building
@@ -90,22 +88,6 @@ public class Building {
 		this.customerList = al;
 	}
 	
-// NOT NEEDED
-//	public void setOutput(String s){
-//		this.output+=s;
-//	}
-//	public String getOutput(){
-//		return this.output;
-//	}
-//	public void log(String s){
-//		this.log+=s+'\n';
-//	}
-//	public String getLog(){
-//		return this.log;
-//	}
-	
-	
-	
 	
 	/**
 	 * moves the elevator from the bottom to the top of the building.
@@ -114,12 +96,10 @@ public class Building {
 	 */
 	public void defaultStrategy() 
 	{
-		//log("defaultStrategy");
 		
 		System.out.println("Default Strategy" + "\n===========================================");
 		
-		int totalStops = 0;
-		//elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods	
+		int totalStops = 0;	
 		elevator.setDirection(1);
 		
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
@@ -136,7 +116,6 @@ public class Building {
 			totalStops++;
 			
 		}
-		//log("---------------------------------------------");
 		System.out.println("-------------------------------------------");
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
@@ -153,11 +132,9 @@ public class Building {
 			
 			totalStops++;
 		}
-		// NOT NEEDED
 		System.out.println("===========================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size()+'\n');
-		//this.output += "defaultStrategy(): Number of stops: " + totalStops + '\n';
 		System.out.println("Total stops using default strategy: " + totalStops + "\n===========================================");
 	}
 	
@@ -168,13 +145,11 @@ public class Building {
 	public void efficientStrategy() 
 	{
 		
-		//log("efficientStrategy: =========================================================");
-		
 		System.out.println("efficient Strategy" + "\n===========================================");
 		int totalStops = 0;
 		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
 		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods
-		//int numberOfCustomersOnFloor = 0;
+
 		for(int i = 0; i <= elevator.getNumOfFloors(); i++) 
 		{
 			
@@ -183,8 +158,6 @@ public class Building {
 			for(int j = 0; j < customerList.size(); j++) {
 				Customer e = customerList.get(j);
 				if(e.getCurrentFloor() == i) {
-					this.customerList.remove(e);
-					//System.out.println("Customer " + e.getId() + " enters on floor: " + i);
 					if(e.getCurrentFloor() != 0 && elevator.getCurrentFloor() != 0) {
 						totalStops++;
 					}
@@ -197,7 +170,6 @@ public class Building {
 			elevator.move();
 			this.checkFloor(i);
 		}
-		//log("---------------------------------------------");
 		System.out.println("-------------------------------------------");
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
@@ -221,7 +193,6 @@ public class Building {
 		System.out.println("elevator register list size: " + elevator.registerList.size());
 		System.out.println("building customer list size: " + this.customerList.size());
 		System.out.println("Total stops using efficient strategy: " + totalStops + "\n===========================================");
-		//this.output += "efficientStrategy(): Number of stops: " + totalStops + '\n';
 	}
 	
 	/**
@@ -237,7 +208,6 @@ public class Building {
 			
 			if(c.getCurrentFloor() == f)
 			{
-				//log("Customer " + c.getId() + " enters on floor: "+ f);
 				System.out.println("Customer " + c.getId() + " enters on floor: " + f);
 				elevator.customerJoinsElevator(c);
 				this.customerList.remove(c);
@@ -251,7 +221,6 @@ public class Building {
 			
 			if(c.getDestinationFloor() == f)
 			{
-				//log("Customer " + c.getId() + " exits on floor: " + f);
 				System.out.println("Customer " + c.getId() + " exits on floor: " + f);
 				elevator.customerLeavesElevator(c);
 				i--;			
@@ -284,37 +253,5 @@ public class Building {
 		}
 		
 	}
-	
-//MOVED FOLLOWING METHOD TO ELEVATOR CLASS AS REQUIRED IN THE PROJECT SPECIFICATIONS
-//	/**
-//	 * adds a Customer to the Elevator's registeList
-//	 * @param c a Customer to be added to the registerList
-//	 */
-//	public void customerJoinsElevator(Customer c)
-//	{
-//		if(elevator.registerList.contains(c))
-//		{
-//			System.out.println("Error. It apears that the customer already is in the Elevator...");
-//			return;
-//		}
-//		else
-//		{
-//			elevator.registerList.add(c);
-//		}
-//	}
-//	
-//	/**
-//	 * The method to remove a Customer from the Elevator's registerList
-//	 * @param c a Customer to be removed from the registerList
-//	 */
-//	public void customerLeavesElevator(Customer c){
-//		if(elevator.registerList.contains(c)) 
-//		{
-//			elevator.registerList.remove(c);
-//		}
-//		else
-//		{
-//			System.out.println("Error. The customer is not anymore in the Elevator...");
-//		}
-//	}	
+
 }
