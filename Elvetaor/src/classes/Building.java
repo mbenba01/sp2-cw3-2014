@@ -133,7 +133,7 @@ public class Building {
 		System.out.println("Total stops using default strategy: " + totalStops + "\n===========================================");
 	}
 	public void testStrategy(){
-		System.out.println("Default Strategy" + "\n===========================================");
+		System.out.println("testStrategy" + "\n===========================================");
 		int totalStops = 0;	
 		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
 		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods
@@ -152,13 +152,11 @@ public class Building {
 		}
 		System.out.println("-------------------------------------------");
 		elevator.setDirection(-1);
-		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
-		{
-			if(i == 13) 
-			{
+		for(int i = elevator.getNumOfFloors(); i >= 0; i--){
+			
+			if(i == 13) {
 				continue;
 			}
-			
 			displayMove("down");
 			elevator.move();
 			if(this.checkFloor(i, true)){
@@ -166,6 +164,10 @@ public class Building {
 				totalStops++;
 			}
 		}
+		System.out.println("===========================================");
+		System.out.println("elevator register list size: " + elevator.registerList.size());
+		System.out.println("building customer list size: " + this.customerList.size());
+		System.out.println("Total stops using test strategy: " + totalStops + "\n===========================================");
 	}
 	/**
 	 * moves through the floors of the building but only stops where customers are present.
