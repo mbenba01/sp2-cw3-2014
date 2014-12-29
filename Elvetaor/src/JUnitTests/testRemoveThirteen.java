@@ -18,8 +18,6 @@ public class testRemoveThirteen {
 		
 		assertEquals("Wrong answer!", expected, actual);
 		
-		
-		
 	}
 
 }

@@ -2,6 +2,11 @@ package classes;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Mustapha Benbaziz / Mariusz Lewandowski
+ *
+ */
 public class Elevator {
 	
 	private int numOfFloors;
@@ -9,6 +14,10 @@ public class Elevator {
 	private int currentFloor;
 	private int direction;  // -1==going down; 0==stops; 1==going up
 	
+	/**
+	 * Constructs instances of class Elevator
+	 * @param f
+	 */
 	public Elevator(int f) {
 		
 		numOfFloors = f;
@@ -70,31 +79,36 @@ public class Elevator {
 	}
 	
 	/**
-	 * The method to add a Customer to the Elevator's registeList
+	 * adds a Customer to the Elevator's registeList
 	 * @param c a Customer to be added to the registerList
 	 */
-	public void customerJoinsElevator(Customer c){
-		if(registerList.contains(c)){
+	public void customerJoinsElevator(Customer c)
+	{
+		if(this.registerList.contains(c))
+		{
 			System.out.println("Error. It apears that the customer already is in the Elevator...");
 			return;
-		}else{
-			registerList.add(c);
+		}
+		else
+		{
+			this.registerList.add(c);
 		}
 	}
+	
 	/**
 	 * The method to remove a Customer from the Elevator's registerList
 	 * @param c a Customer to be removed from the registerList
 	 */
 	public void customerLeavesElevator(Customer c){
-		if(registerList.contains(c)) 
+		if(this.registerList.contains(c)) 
 		{
-			registerList.remove(c);
+			this.registerList.remove(c);
 		}
 		else
 		{
 			System.out.println("Error. The customer is not anymore in the Elevator...");
 		}
-	}
+	}	
 	public int getDirection(){
 		return direction;
 	}

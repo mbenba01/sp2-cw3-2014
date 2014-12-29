@@ -96,7 +96,9 @@ public class Customer {
 			destinationFloor = (i+j+2)%f;
 		}
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
