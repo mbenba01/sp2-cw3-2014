@@ -234,6 +234,8 @@ public class Building {
 	 * checks if there is someone waiting for the elevator on the floor "f".
 	 * also checks if there is someone in the elevator with destination equal "f".
 	 * @param f a current floor where check is performed
+	 * @param test if set to true the function will only test if there is someone on the floor f going in/out of lift.
+	 * @return true if there will be exchange of Customers Between elevator and Building
 	 */
 	public boolean checkFloor(int f, boolean test)
 	{
