@@ -50,6 +50,7 @@ public class Controller {
 		Building theHyde = new Building(numberOfFloors, numberOfCustomers);
 		
 		ArrayList<Customer> customersInBuilding = theHyde.getCustomerList();
+		
 		// copying the list in order to compare strategies on the same input for better readability
 		ArrayList<Customer> customersInBuilding2 = new ArrayList<Customer>(customersInBuilding);
 		
@@ -58,6 +59,7 @@ public class Controller {
 		theHyde.defaultStrategy();
 		
 		theHyde.setCustomerList(customersInBuilding2);
+		
 		theHyde.efficientStrategy();
 		
 		// comment or uncomment in order to swith off/on output from class Building

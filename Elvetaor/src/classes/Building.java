@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * that will be used in the Elevator program.
  * The class constructor Building() takes two parameters, 
  * numberOfFloors and numberOfCustomers
- * @author Mustapha Benbaziz
+ * @author Mustapha Benbaziz / Mariusz Lewandowski
  * @version 1.0
  * 
  * 
@@ -25,8 +25,8 @@ public class Building {
 	
 	/**
 	 * Constructs instances of Building
-	 * @param f represents the number of floors, to be decided by the user
-	 * @param c represents the number of customers, to
+	 * @param f represents the number of floors, to be added by the user
+	 * @param c represents the number of customers, to be added by the user
 	 */
 	public Building(int f, int c) {
 		
@@ -46,31 +46,51 @@ public class Building {
 		this.setElevator();
 		this.output = "";
 	}
+	
 	/**
-	 * setters and getters...
+	 * Allows access to the numberOfFloors field outside class Building
+	 * @return numberOfFloors of type int
 	 */
 	public int getNumberOfFloors() {
 		return numberOfFloors;
 	}
 	
+	/**
+	 * Allows access to the numberOfFloors field outside class Building
+	 * @return numberOfCustomers of type int
+	 */
 	public int getNumberOfCustomers() {
 		return numberOfCustomers;
 	}
 	
+	/**
+	 * Adds value to the elevator field. Used to create a new elevator in class Building
+	 */
 	public void setElevator() {
 		elevator = new Elevator(this.getNumberOfFloors());
 	}
 	
+	/**
+	 * Allows access to elevator field outside class Building
+	 * @return elevator (object of type Elevator)
+	 */
 	public Elevator getElevator() {
 		return elevator;	
 	}
 
+	/**
+	 * Allows access to the customerList field outside class Building 
+	 * @return customerList (ArrayList of objects of type Customer
+	 */
 	public ArrayList<Customer> getCustomerList() {
 		return customerList;
 	}
+	
+	
 	public void setCustomerList(ArrayList<Customer> al){
 		this.customerList = al;
 	}
+	
 	public void setOutput(String s){
 		this.output+=s;
 	}
