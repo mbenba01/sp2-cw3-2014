@@ -181,7 +181,7 @@ public class Building {
 				Customer e = customerList.get(j);
 				if(e.getDestinationFloor() == elevator.getCurrentFloor()) {
 					System.out.println("Customer " + e.getId() + " exits on floor: " + i);
-					totalStops++;
+					stop = true;
 				}
 				if(stop)totalStops++;
 				stop = false;
