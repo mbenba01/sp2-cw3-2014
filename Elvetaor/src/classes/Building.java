@@ -45,7 +45,9 @@ public class Building {
 		this.setElevator();
 		this.output = "";
 	}
-	
+	/**
+	 * setters and getters...
+	 */
 	public int getNumberOfFloors() {
 		return numberOfFloors;
 	}
@@ -122,7 +124,7 @@ public class Building {
 		System.out.println("building customer list size: " + this.customerList.size());
 		this.output += "defaultStrategy(): Number of stops: " + totalStops + '\n';
 	}
-	/*
+	/**
 	 * moves through the floors of the building but only stops where customers are present.
 	 * This ensures the elevator only stops when there are customers present on floors.
 	 */
@@ -177,7 +179,11 @@ public class Building {
 		System.out.println("building customer list size: " + this.customerList.size());
 		this.output += "efficientStrategy(): Number of stops: " + totalStops + '\n';
 	}
-	
+	/**
+	 * checks if there is someone waiting for the elevator on the floor "f".
+	 * also checks if there is someone in the elevator with destination equal "f".
+	 * @param f a current floor where check is performed
+	 */
 	public void checkFloor(int f)
 	{
 		for(int i = 0; i < this.customerList.size(); i++)
@@ -207,7 +213,7 @@ public class Building {
 	}
 	
 	/**
-	 * The method to add a Customer to the Elevator's registeList
+	 * adds a Customer to the Elevator's registeList
 	 * @param c a Customer to be added to the registerList
 	 */
 	public void customerJoinsElevator(Customer c)
