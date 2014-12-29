@@ -154,18 +154,19 @@ public class Building {
 		{
 			
 			displayMove("up");
-			
+			boolean stop = false;
 			for(int j = 0; j < customerList.size(); j++) {
 				Customer e = customerList.get(j);
 				if(e.getCurrentFloor() == i) {
 					if(e.getCurrentFloor() != 0 && elevator.getCurrentFloor() != 0) {
-						totalStops++;
+						stop = true;
 					}
 					System.out.println("Number of customers on floor " + 
 										elevator.getCurrentFloor() + ": " + 
 										customerList.size());
 				}
-				
+				if(stop)totalStops++;
+				stop = false;
 			}
 			elevator.move();
 			this.checkFloor(i);
@@ -173,18 +174,17 @@ public class Building {
 		System.out.println("-------------------------------------------");
 		elevator.setDirection(-1);
 		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
-		{	
-			
+		{
 			displayMove("down");
-			
-
+			boolean stop = false;
 			for(int j = 0; j < customerList.size(); j++) {
 				Customer e = customerList.get(j);
 				if(e.getDestinationFloor() == elevator.getCurrentFloor()) {
 					System.out.println("Customer " + e.getId() + " exits on floor: " + i);
 					totalStops++;
 				}
-				
+				if(stop)totalStops++;
+				stop = false;
 			}
 			elevator.move();
 			this.checkFloor(i);
