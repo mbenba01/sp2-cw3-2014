@@ -20,8 +20,8 @@ public class Customer {
 		this.id = id;
 		Random ran = new Random();
 		
-		int i = ran.nextInt(f+1); // Set the range for the random number between 0 and number of floors + 1 (used to replace 13). 
-		int j = ran.nextInt(f+1); // Set the range for the random number between 0 and number of floors + 1 (used to replace 13).
+		int i = ran.nextInt(f); // Set the range for the random number between 0 and number of floors + 1 (used to replace 13). 
+		int j = ran.nextInt(f); // Set the range for the random number between 0 and number of floors + 1 (used to replace 13).
 		
 		this.currentFloor = removeThirteen(i); // remove thirteen from possible random numbers 
 		this.destinationFloor = removeThirteen(j); // remove thirteen from possible random numbers

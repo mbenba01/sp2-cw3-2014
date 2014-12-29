@@ -27,7 +27,7 @@ public class Building {
 	 */
 	public Building(int f, int c) {
 		
-		if(f>12)f++;
+		if(f>12)f++; // for the buildings with no 13th floor we need to add 1 more because program is bypassing it
 		this.numberOfFloors = f; // Number of floors in the building
 		numberOfCustomers = c;   // Number of customers in the building
 		
