@@ -108,13 +108,47 @@ public class Building {
 			{
 				continue;
 			}
-			
 			displayMove("up");
-			this.checkFloor(i);
-			elevator.move();
-			
+			this.checkFloor(i,false);
 			totalStops++;
+			elevator.move();
+		}
+		System.out.println("-------------------------------------------");
+		elevator.setDirection(-1);
+		for(int i = elevator.getNumOfFloors(); i >= 0; i--) 
+		{
+			if(i == 13) 
+			{
+				continue;
+			}
 			
+			displayMove("down");
+			this.checkFloor(i,false);
+			totalStops++;
+			elevator.move();
+		}
+		System.out.println("===========================================");
+		System.out.println("elevator register list size: " + elevator.registerList.size());
+		System.out.println("building customer list size: " + this.customerList.size()+'\n');
+		System.out.println("Total stops using default strategy: " + totalStops + "\n===========================================");
+	}
+	public void testStrategy(){
+		System.out.println("Default Strategy" + "\n===========================================");
+		int totalStops = 0;	
+		elevator.setDirection(1);  // elevator goes up only in case if lift is on the ground floor 
+		elevator.setCurrentFloor(0); // setting elevator current floor hard in order to have correct comparison between methods
+		
+		for(int i = 0; i <= elevator.getNumOfFloors(); i++) {
+			
+			if(i == 13) {
+				continue;
+			}
+			displayMove("up");
+			if(this.checkFloor(i,true)){
+				this.checkFloor(i, false);
+				totalStops++;
+			}
+			elevator.move();
 		}
 		System.out.println("-------------------------------------------");
 		elevator.setDirection(-1);
@@ -127,17 +161,12 @@ public class Building {
 			
 			displayMove("down");
 			elevator.move();
-			this.checkFloor(i);
-			
-			
-			totalStops++;
+			if(this.checkFloor(i, true)){
+				this.checkFloor(i,false);
+				totalStops++;
+			}
 		}
-		System.out.println("===========================================");
-		System.out.println("elevator register list size: " + elevator.registerList.size());
-		System.out.println("building customer list size: " + this.customerList.size()+'\n');
-		System.out.println("Total stops using default strategy: " + totalStops + "\n===========================================");
 	}
-	
 	/**
 	 * moves through the floors of the building but only stops where customers are present.
 	 * This ensures the elevator only stops when there are customers present on floors.
@@ -169,7 +198,7 @@ public class Building {
 				stop = false;
 			}
 			elevator.move();
-			this.checkFloor(i);
+			this.checkFloor(i,false);
 		}
 		System.out.println("-------------------------------------------");
 		elevator.setDirection(-1);
@@ -187,7 +216,7 @@ public class Building {
 				stop = false;
 			}
 			elevator.move();
-			this.checkFloor(i);
+			this.checkFloor(i, false);
 		}
 		System.out.println("===========================================");
 		System.out.println("elevator register list size: " + elevator.registerList.size());
@@ -200,18 +229,24 @@ public class Building {
 	 * also checks if there is someone in the elevator with destination equal "f".
 	 * @param f a current floor where check is performed
 	 */
-	public void checkFloor(int f)
+	public boolean checkFloor(int f, boolean test)
 	{
+		boolean anyone = false;
 		for(int i = 0; i < this.customerList.size(); i++)
 		{
 			Customer c = this.customerList.get(i);
 			
 			if(c.getCurrentFloor() == f)
 			{
+				anyone=true;
+				if(test){
+					continue;
+				}
 				System.out.println("Customer " + c.getId() + " enters on floor: " + f);
 				elevator.customerJoinsElevator(c);
 				this.customerList.remove(c);
 				i--;
+				
 			}
 		}
 		
@@ -221,11 +256,16 @@ public class Building {
 			
 			if(c.getDestinationFloor() == f)
 			{
+				anyone=true;
+				if(test){
+					continue;
+				}
 				System.out.println("Customer " + c.getId() + " exits on floor: " + f);
 				elevator.customerLeavesElevator(c);
-				i--;			
+				i--;
 			}
 		}
+		return anyone;
 	}
 	
 	/**
