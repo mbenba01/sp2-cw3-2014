@@ -66,7 +66,6 @@ public class Customer {
 	 */
 	public void differenciate(int i, int j, int f) {
 		if(i==j){
-			System.out.println(this.id + " current and destination were the same !!");
 			destinationFloor = (i+j+2)%f;
 		}
 	}

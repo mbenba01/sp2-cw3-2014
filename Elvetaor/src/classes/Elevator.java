@@ -27,7 +27,6 @@ public class Elevator {
 	 * @param i represents the floors in the building
 	 */
 	public void move(){
-		//System.out.println("Currently on "+currentFloor+" floor ");
 		if(direction==1)
 		{ // if direction is set to 1 lift will move one floor up
 			if(currentFloor==numOfFloors)
